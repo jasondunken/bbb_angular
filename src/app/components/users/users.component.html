@@ -1,0 +1,23 @@
+<div class="users-page">
+    <div class="create-user-form" [formGroup]="createUserForm">
+        <label for="name">Name</label>
+        <input type="text" name="name" formControlName="userName" />
+        <label for="email">Email</label>
+        <input type="email" name="email" formControlName="email" />
+        <label for="password">Password</label>
+        <input type="text" name="password" formControlName="password" />
+        <div class="button" (click)="createUser()">Create User</div>
+    </div>
+    <div class="get-user-details" [formGroup]="getUserForm">
+        <label for="userId">User ID</label>
+        <input type="text" name="userId" formControlName="userId" />
+        <div *ngIf="userDetails">
+            <div>User Details</div>
+            <p>ID {{ userDetails._id }}</p>
+            <p>Name {{ userDetails.userName }}</p>
+            <p>Email {{ userDetails.email }}</p>
+            <p>Password {{ userDetails.password }}</p>
+        </div>
+        <div class="button" (click)="findOne()">Get User</div>
+    </div>
+</div>

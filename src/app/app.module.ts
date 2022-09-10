@@ -8,9 +8,11 @@ import { AppRoutingModule } from "./app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppComponent } from "./app.component";
 import { CatsComponent } from "./components/cats/cats.component";
+import { HeaderComponent } from "./components/header/header.component";
+import { UsersComponent } from "./components/users/users.component";
 
 @NgModule({
-    declarations: [AppComponent, CatsComponent],
+    declarations: [AppComponent, CatsComponent, HeaderComponent, UsersComponent],
     imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],
