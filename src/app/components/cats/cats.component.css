@@ -1,7 +1,8 @@
 .cat-page {
-    height: 100%;
     display: grid;
     place-items: center;
+    margin: 16px;
+    border: 1px solid black;
 }
 
 .create-cat-form,

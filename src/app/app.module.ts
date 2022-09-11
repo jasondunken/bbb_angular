@@ -10,9 +10,11 @@ import { AppComponent } from "./app.component";
 import { CatsComponent } from "./components/cats/cats.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { UsersComponent } from "./components/users/users.component";
+import { ManagementComponent } from './components/management/management.component';
+import { JournalsComponent } from './components/journals/journals.component';
 
 @NgModule({
-    declarations: [AppComponent, CatsComponent, HeaderComponent, UsersComponent],
+    declarations: [AppComponent, CatsComponent, HeaderComponent, UsersComponent, ManagementComponent, JournalsComponent],
     imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
     providers: [],
     bootstrap: [AppComponent],
