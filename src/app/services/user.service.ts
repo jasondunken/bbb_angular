@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 
 import { environment } from "src/environments/environment";
 
-import { CreateUserDto } from "../models/user-create.model";
+import { CreateUserDto } from "../models/user.model";
 
 @Injectable({
     providedIn: "root",
@@ -21,11 +21,11 @@ export class UserService {
         return this.http.get(`${environment.backend_api}/users`);
     }
 
-    findOne(id: string): Observable<any> {
+    findOne(id: String): Observable<any> {
         return this.http.get(`${environment.backend_api}/users/${id}`);
     }
 
-    delete(id: string): Observable<any> {
+    delete(id: String): Observable<any> {
         return this.http.delete(`${environment.backend_api}/users/${id}`);
     }
 }

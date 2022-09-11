@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { CreateUserDto, UserDto } from "src/app/models/user-create.model";
+import { CreateUserDto, UserDto } from "src/app/models/user.model";
 import { UserService } from "src/app/services/user.service";
 
 @Component({
@@ -11,8 +11,12 @@ import { UserService } from "src/app/services/user.service";
 export class UsersComponent implements OnInit {
     createUserForm: FormGroup;
     getUserForm: FormGroup;
+    deleteUserForm: FormGroup;
 
     userDetails: UserDto | undefined;
+    users: UserDto[] | undefined;
+
+    deleteStatus = "";
 
     constructor(private fb: FormBuilder, private userService: UserService) {
         this.createUserForm = this.fb.group({
@@ -21,6 +25,9 @@ export class UsersComponent implements OnInit {
             password: ["", Validators.required],
         });
         this.getUserForm = this.fb.group({
+            userId: ["", Validators.required],
+        });
+        this.deleteUserForm = this.fb.group({
             userId: ["", Validators.required],
         });
         this.findAll();
@@ -32,12 +39,14 @@ export class UsersComponent implements OnInit {
         const user: CreateUserDto = this.createUserForm.value;
         this.userService.create(user).subscribe((user: UserDto) => {
             console.log("user created: ", user);
+            this.findAll();
         });
     }
 
     findAll(): void {
         this.userService.findAll().subscribe((users: UserDto[]) => {
             console.log("users: ", users);
+            this.users = users;
         });
     }
 
@@ -46,6 +55,15 @@ export class UsersComponent implements OnInit {
         this.userService.findOne(id).subscribe((user: UserDto) => {
             console.log("user details: ", user);
             this.userDetails = user;
+        });
+    }
+
+    delete(): void {
+        const id: String = this.deleteUserForm.get("userId")?.value;
+        this.userService.delete(id).subscribe((response) => {
+            console.log("delete response: ", response);
+            this.deleteStatus = "user deleted";
+            this.findAll();
         });
     }
 }

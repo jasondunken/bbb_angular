@@ -1,11 +1,14 @@
 .users-page {
-    height: 100%;
     display: grid;
     place-items: center;
+    margin: 16px;
+    border: 1px solid black;
 }
 
-.create-user-form,
-.get-user-details {
+.create-user-component,
+.users-component,
+.user-details-component,
+.delete-user-component {
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 0.5rem;
@@ -13,6 +16,11 @@
     background-color: burlywood;
     border: 1px solid black;
     border-radius: 4px;
+}
+
+.section-title {
+    font-weight: 700;
+    text-align: center;
 }
 
 .button {

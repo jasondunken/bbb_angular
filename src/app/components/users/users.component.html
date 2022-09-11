@@ -1,5 +1,6 @@
 <div class="users-page">
-    <div class="create-user-form" [formGroup]="createUserForm">
+    <div class="create-user-component" [formGroup]="createUserForm">
+        <div class="section-title">Create User</div>
         <label for="name">Name</label>
         <input type="text" name="name" formControlName="userName" />
         <label for="email">Email</label>
@@ -8,7 +9,15 @@
         <input type="text" name="password" formControlName="password" />
         <div class="button" (click)="createUser()">Create User</div>
     </div>
-    <div class="get-user-details" [formGroup]="getUserForm">
+    <div *ngIf="users" class="users-component">
+        <div class="section-title">Users</div>
+        <div *ngFor="let user of users">
+            <p>Name {{ user.userName }}</p>
+            <p>ID {{ user._id }}</p>
+        </div>
+    </div>
+    <div class="user-details-component" [formGroup]="getUserForm">
+        <div class="section-title">Get User Details</div>
         <label for="userId">User ID</label>
         <input type="text" name="userId" formControlName="userId" />
         <div *ngIf="userDetails">
@@ -19,5 +28,12 @@
             <p>Password {{ userDetails.password }}</p>
         </div>
         <div class="button" (click)="findOne()">Get User</div>
+    </div>
+    <div class="delete-user-component" [formGroup]="deleteUserForm">
+        <div class="section-title">Delete User</div>
+        <label for="userId">User ID</label>
+        <input type="text" name="userId" formControlName="userId" />
+        <div id="delete-status">{{ deleteStatus || "" }}</div>
+        <div class="button" (click)="delete()">Delete User</div>
     </div>
 </div>
