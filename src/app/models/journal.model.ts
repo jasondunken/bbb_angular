@@ -1,24 +1,30 @@
 export interface CreateJournalDto {
-    journalName: String;
-    journalDescription: String;
+    name: String;
+    description: String;
 }
 
 export interface JournalDto {
     _id: String;
-    journalName: String;
-    journalDescription: String;
-    journalEntries: [];
+    name: String;
+    description: String;
+    entries: [];
+    createdAt: Date;
+    lastUpdate: Date;
 }
 
 export interface CreateJournalEntryDto {
-    journalEntry: String;
-    journalEntryTitle: String;
+    title: String;
+    description: String;
+    body: String;
     images: [];
 }
 
 export interface JournalEntryDto {
     _id: String;
-    journalEntry: String;
-    journalEntryTitle: String;
+    title: String;
+    description: String;
+    body: String;
     images: [];
+    createdAt: Date;
+    lastUpdate: Date;
 }

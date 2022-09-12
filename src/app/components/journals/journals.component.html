@@ -2,35 +2,36 @@
     <div class="create-journal-component" [formGroup]="createJournalForm">
         <div class="section-title">Create Journal</div>
         <label for="name">Name</label>
-        <input type="text" name="name" formControlName="journalName" />
+        <input type="text" name="name" formControlName="name" />
         <label for="description">Description</label>
-        <input type="text" name="description" formControlName="journalDescription" />
+        <input type="text" name="description" formControlName="description" />
+        <div class="button" (click)="createJournal()">Create Journal</div>
     </div>
     <div *ngIf="journals" class="journals-component">
         <div class="section-title">Journals</div>
         <div *ngFor="let journal of journals">
-            <p>Name {{ journal.journalName }}</p>
-            <p>Description {{ journal.journalDescription }}</p>
+            <p>Name {{ journal.name }}</p>
+            <p>Description {{ journal.description }}</p>
             <p>ID {{ journal._id }}</p>
         </div>
     </div>
     <div class="journal-details-component" [formGroup]="getJournalForm">
         <div class="section-title">Get Journal Details</div>
         <label for="journalId">Journal ID</label>
-        <input type="text" name="journalId" formControlName="journalId" />
+        <input type="text" name="journalId" formControlName="id" />
         <div *ngIf="journal">
             <div>Journal Details</div>
             <p>ID {{ journal._id }}</p>
-            <p>Name {{ journal.journalName }}</p>
-            <p>Description {{ journal.journalDescription }}</p>
-            <p>Entries {{ journal.journalEntries.length }}</p>
+            <p>Name {{ journal.name }}</p>
+            <p>Description {{ journal.description }}</p>
+            <p>Entries {{ journal.entries.length }}</p>
         </div>
         <div class="button" (click)="findOne()">Get Journal</div>
     </div>
     <div class="delete-journal-component" [formGroup]="deleteJournalForm">
         <div class="section-title">Delete Journal</div>
         <label for="journalId">Journal ID</label>
-        <input type="text" name="journalId" formControlName="journalId" />
+        <input type="text" name="journalId" formControlName="id" />
         <div id="delete-status">{{ deleteStatus || "" }}</div>
         <div class="button" (click)="delete()">Delete Journal</div>
     </div>

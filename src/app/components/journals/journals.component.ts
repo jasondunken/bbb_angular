@@ -21,15 +21,16 @@ export class JournalsComponent implements OnInit {
 
     constructor(private fb: FormBuilder, private journalService: JournalService) {
         this.createJournalForm = this.fb.group({
-            journalName: ["", Validators.required],
-            journalDescription: ["", Validators.required],
+            name: ["", Validators.required],
+            description: ["", Validators.required],
         });
         this.getJournalForm = this.fb.group({
-            journalId: ["", Validators.required],
+            id: ["", Validators.required],
         });
         this.deleteJournalForm = this.fb.group({
-            journalId: ["", Validators.required],
+            id: ["", Validators.required],
         });
+        this.findAll();
     }
 
     ngOnInit(): void {}
@@ -38,6 +39,7 @@ export class JournalsComponent implements OnInit {
         const journal: CreateJournalDto = this.createJournalForm.value;
         this.journalService.create(journal).subscribe((journal: JournalDto) => {
             console.log("new journal created: ", journal);
+            this.findAll();
         });
     }
 
@@ -48,16 +50,17 @@ export class JournalsComponent implements OnInit {
     }
 
     findOne(): void {
-        const id: string = this.getJournalForm.value;
+        const id: string = this.getJournalForm.get("id")?.value;
         this.journalService.findOne(id).subscribe((journal: JournalDto) => {
             this.journal = journal;
         });
     }
 
     delete(): void {
-        const id: String = this.deleteJournalForm.value;
+        const id: String = this.deleteJournalForm.get("id")?.value;
         this.journalService.delete(id).subscribe((journal: JournalDto) => {
             console.log("journal deleted: ", journal);
+            this.findAll();
         });
     }
 }
