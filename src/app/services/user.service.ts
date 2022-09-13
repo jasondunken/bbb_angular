@@ -10,22 +10,22 @@ import { CreateUserDto } from "../models/user.model";
     providedIn: "root",
 })
 export class UserService {
-    apiUsers = `${environment.backend_api}/users`;
+    apiUsers = `${environment.backend_api}`;
     constructor(private http: HttpClient) {}
 
     create(user: CreateUserDto): Observable<any> {
-        return this.http.post(this.apiUsers, user);
+        return this.http.post(this.apiUsers + "/register", user);
     }
 
     findAll(): Observable<any> {
-        return this.http.get(this.apiUsers);
+        return this.http.get(this.apiUsers + "/users");
     }
 
     findOne(id: String): Observable<any> {
-        return this.http.get(`${this.apiUsers}/${id}`);
+        return this.http.get(`${this.apiUsers}/users/${id}`);
     }
 
     delete(id: String): Observable<any> {
-        return this.http.delete(`${this.apiUsers}/${id}`);
+        return this.http.delete(`${this.apiUsers}/users/${id}`);
     }
 }
