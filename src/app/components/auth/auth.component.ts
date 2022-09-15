@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { CookieService } from "ngx-cookie-service";
+import { LoginResponseDto } from "src/app/models/login.model";
 
 import { AuthService } from "src/app/services/auth.service";
 
@@ -11,18 +13,22 @@ import { AuthService } from "src/app/services/auth.service";
 export class AuthComponent implements OnInit {
     loginForm: FormGroup;
 
-    constructor(private fb: FormBuilder, private auth: AuthService) {
+    constructor(private fb: FormBuilder, private auth: AuthService, private cookieService: CookieService) {
         this.loginForm = this.fb.group({
             email: ["", Validators.required],
             password: ["", Validators.required],
         });
     }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        // this.cookieService.deleteAll();
+    }
 
     login(): void {
-        this.auth.login(this.loginForm.value).subscribe((token: string) => {
-            console.log("jwt_token: ", token);
+        this.auth.login(this.loginForm.value).subscribe((response: LoginResponseDto) => {
+            if (response.JWT) {
+                this.cookieService.set("bitbytebytes.io/JWT", response.JWT, 1); // expires in days
+            }
         });
     }
 }
