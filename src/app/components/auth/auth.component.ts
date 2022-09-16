@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { CookieService } from "ngx-cookie-service";
-import { LoginResponseDto } from "src/app/models/login.model";
 
+import { CookieService } from "ngx-cookie-service";
+
+import { LoginResponseDto } from "src/app/models/login.model";
 import { AuthService } from "src/app/services/auth.service";
 
 @Component({

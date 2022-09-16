@@ -14,6 +14,7 @@ import { UsersComponent } from "./components/users/users.component";
 import { ManagementComponent } from "./components/management/management.component";
 import { JournalsComponent } from "./components/journals/journals.component";
 import { AuthComponent } from "./components/auth/auth.component";
+import { AuthInterceptor } from "./interceptors/auth.interceptor";
 
 @NgModule({
     declarations: [
@@ -25,7 +26,14 @@ import { AuthComponent } from "./components/auth/auth.component";
         AuthComponent,
     ],
     imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-    providers: [CookieService],
+    providers: [
+        CookieService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true,
+        },
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
