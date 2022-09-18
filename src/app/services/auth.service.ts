@@ -1,23 +1,39 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 import { CookieService } from "ngx-cookie-service";
-import { Observable, of } from "rxjs";
-import { timeout, catchError } from "rxjs/operators";
+import { BehaviorSubject, Observable, of, Subject } from "rxjs";
+import { timeout, catchError, tap, takeUntil } from "rxjs/operators";
 
 import { environment } from "src/environments/environment";
 
-import { LoginDto } from "../models/login.model";
+import { LoginDto, LoginResponseDto } from "../models/login.model";
 
 @Injectable({
     providedIn: "root",
 })
-export class AuthService {
-    constructor(private http: HttpClient, private cookieService: CookieService, private router: Router) {}
+export class AuthService implements OnDestroy {
+    private ngUnsubscribe = new Subject<boolean>();
+
+    private userUpdated: BehaviorSubject<any> | undefined;
+    currentUser: LoginResponseDto | undefined;
+
+    constructor(private http: HttpClient, private cookieService: CookieService, private router: Router) {
+        this.userUpdated = new BehaviorSubject<any>(null);
+    }
+
+    ngOnDestroy() {
+        this.ngUnsubscribe.next(true);
+        this.ngUnsubscribe.complete();
+    }
 
     login(user: LoginDto): Observable<any> {
         return this.http.post(`${environment.backend_api}/login`, user).pipe(
-            timeout(5000),
+            takeUntil(this.ngUnsubscribe),
+            tap((response: LoginResponseDto) => {
+                this.userUpdated.next(response.username);
+                this.currentUser = response;
+            }),
             catchError((err) => {
                 return of({ error: "failed to login!", err });
             })
@@ -31,5 +47,9 @@ export class AuthService {
 
     getAuthToken(): string {
         return this.cookieService.get("bitbytebytes.io/JWT");
+    }
+
+    getUserUpdate(): BehaviorSubject<any> {
+        return this.userUpdated;
     }
 }
