@@ -27,9 +27,7 @@ export class AuthComponent implements OnInit {
 
     login(): void {
         this.auth.login(this.loginForm.value).subscribe((response: LoginResponseDto) => {
-            if (response.JWT) {
-                this.cookieService.set("bitbytebytes.io/JWT", response.JWT, 1); // expires in days
-            }
+            console.log("login response: ", response);
         });
     }
 }

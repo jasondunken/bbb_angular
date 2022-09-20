@@ -19,7 +19,8 @@ export class AuthService implements OnDestroy {
     currentUser: LoginResponseDto | undefined;
 
     constructor(private http: HttpClient, private cookieService: CookieService, private router: Router) {
-        this.userUpdated = new BehaviorSubject<any>(null);
+        const username = this.cookieService.get("bitbytebytes.io/username");
+        this.userUpdated = new BehaviorSubject<any>(username);
     }
 
     ngOnDestroy() {
@@ -31,8 +32,12 @@ export class AuthService implements OnDestroy {
         return this.http.post(`${environment.backend_api}/login`, user).pipe(
             takeUntil(this.ngUnsubscribe),
             tap((response: LoginResponseDto) => {
-                this.userUpdated.next(response.username);
-                this.currentUser = response;
+                if (response.JWT) {
+                    this.cookieService.set("bitbytebytes.io/JWT", response.JWT, 1); // expires in days
+                    this.cookieService.set("bitbytebytes.io/username", response.username, 1); // expires in days
+                    this.userUpdated.next(response.username);
+                    this.currentUser = response;
+                }
             }),
             catchError((err) => {
                 return of({ error: "failed to login!", err });

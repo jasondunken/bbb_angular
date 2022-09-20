@@ -17,6 +17,9 @@ export class JournalsComponent implements OnInit {
     journals: JournalDto[] | undefined;
     journal: JournalDto | undefined;
 
+    creatingEntry: boolean = false;
+    createEntryForm: FormGroup;
+
     deleteStatus: String = "";
 
     constructor(private fb: FormBuilder, private journalService: JournalService) {
@@ -29,6 +32,11 @@ export class JournalsComponent implements OnInit {
         });
         this.deleteJournalForm = this.fb.group({
             id: ["", Validators.required],
+        });
+        this.createEntryForm = this.fb.group({
+            entryTitle: ["", Validators.required],
+            entryDescription: ["", Validators.required],
+            entryBody: ["", Validators.required],
         });
         this.findAll();
     }
@@ -62,5 +70,14 @@ export class JournalsComponent implements OnInit {
             console.log("journal deleted: ", journal);
             this.findAll();
         });
+    }
+
+    createEntry(): void {
+        this.creatingEntry = true;
+    }
+
+    saveEntry(): void {
+        console.log("entry: ", this.createEntryForm.value);
+        this.creatingEntry = false;
     }
 }

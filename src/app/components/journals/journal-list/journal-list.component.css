@@ -1,0 +1,16 @@
+.journal-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    background-color: burlywood;
+    border: 1px solid black;
+    width: 600px;
+    margin: 0 auto;
+    padding: 16px;
+    overflow: auto;
+}
+
+.journal {
+    padding: 16px;
+    border: 1px solid black;
+}

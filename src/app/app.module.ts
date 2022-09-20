@@ -15,6 +15,7 @@ import { ManagementComponent } from "./components/management/management.componen
 import { JournalsComponent } from "./components/journals/journals.component";
 import { AuthComponent } from "./components/auth/auth.component";
 import { AuthInterceptor } from "./interceptors/auth.interceptor";
+import { JournalListComponent } from './components/journals/journal-list/journal-list.component';
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import { AuthInterceptor } from "./interceptors/auth.interceptor";
         ManagementComponent,
         JournalsComponent,
         AuthComponent,
+        JournalListComponent,
     ],
     imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
     providers: [

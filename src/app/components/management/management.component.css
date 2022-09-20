@@ -1,5 +1,6 @@
 .management-component {
     display: grid;
-    grid-template-columns: auto 1fr 1fr 1fr;
+    grid-template-columns: auto auto 1fr 1fr;
     height: 100%;
+    overflow-y: auto;
 }
