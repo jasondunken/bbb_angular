@@ -46,7 +46,8 @@ export class AuthService implements OnDestroy {
     }
 
     logout(): void {
-        this.cookieService.delete("bitbytebytes.io/JWT");
+        this.cookieService.deleteAll();
+        this.userUpdated.next(null);
         this.router.navigateByUrl("/manage");
     }
 

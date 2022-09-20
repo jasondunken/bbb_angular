@@ -30,4 +30,8 @@ export class AuthComponent implements OnInit {
             console.log("login response: ", response);
         });
     }
+
+    logout(): void {
+        this.auth.logout();
+    }
 }
