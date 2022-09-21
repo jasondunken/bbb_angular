@@ -6,4 +6,5 @@ export interface LoginDto {
 export interface LoginResponseDto {
     JWT: string;
     username: string;
+    roles: string[];
 }

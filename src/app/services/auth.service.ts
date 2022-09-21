@@ -35,6 +35,7 @@ export class AuthService implements OnDestroy {
                 if (response.JWT) {
                     this.cookieService.set("bitbytebytes.io/JWT", response.JWT, 1); // expires in days
                     this.cookieService.set("bitbytebytes.io/username", response.username, 1); // expires in days
+                    this.cookieService.set("bitbytebytes.io/roles", JSON.stringify(response.roles), 1); // expires in days
                     this.userUpdated.next(response.username);
                     this.currentUser = response;
                 }
@@ -53,6 +54,10 @@ export class AuthService implements OnDestroy {
 
     getAuthToken(): string {
         return this.cookieService.get("bitbytebytes.io/JWT");
+    }
+
+    getUserRoles(): Observable<any> {
+        return this.http.get(`${environment.backend_api}/roles`);
     }
 
     getUserUpdate(): BehaviorSubject<any> {
