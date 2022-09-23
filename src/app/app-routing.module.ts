@@ -6,6 +6,7 @@ import { RegisterUserComponent } from "./components/auth/register-user/register-
 import { PasswordResetComponent } from "./components/auth/password-reset/password-reset.component";
 import { UsersComponent } from "./components/users/users.component";
 import { JournalListComponent } from "./components/journals/journal-list/journal-list.component";
+import { JournalComponent } from "./components/journals/journal/journal.component";
 import { ManagementComponent } from "./components/management/management.component";
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
     { path: "password-reset", component: PasswordResetComponent },
     { path: "users", component: UsersComponent },
     { path: "journals", component: JournalListComponent },
+    { path: "journals/:id", component: JournalComponent },
     { path: "manage", component: ManagementComponent },
 ];
 

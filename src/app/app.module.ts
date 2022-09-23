@@ -19,6 +19,8 @@ import { JournalListComponent } from './components/journals/journal-list/journal
 import { LoginComponent } from './components/auth/login/login.component';
 import { PasswordResetComponent } from './components/auth/password-reset/password-reset.component';
 import { RegisterUserComponent } from './components/auth/register-user/register-user.component';
+import { JournalComponent } from './components/journals/journal/journal.component';
+import { EntryComponent } from './components/journals/entry/entry.component';
 
 @NgModule({
     declarations: [
@@ -32,6 +34,8 @@ import { RegisterUserComponent } from './components/auth/register-user/register-
         LoginComponent,
         PasswordResetComponent,
         RegisterUserComponent,
+        JournalComponent,
+        EntryComponent,
     ],
     imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
     providers: [
