@@ -1,0 +1,13 @@
+<div class="login-page">
+    <div class="login-component" [formGroup]="loginForm">
+        <label for="email">Email</label>
+        <input type="email" name="email" formControlName="email" />
+        <label for="password">Password</label>
+        <input type="password" name="password" formControlName="password" />
+        <div class="button" (click)="login()">Login</div>
+        <div>Forget Password?</div>
+        <div class="button" (click)="resetPassword()">Reset Password</div>
+        <div>Need an account?</div>
+        <div class="button" (click)="registerNewUser()">Register</div>
+    </div>
+</div>

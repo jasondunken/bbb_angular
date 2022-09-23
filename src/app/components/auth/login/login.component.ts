@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 import { CookieService } from "ngx-cookie-service";
 
@@ -7,11 +7,11 @@ import { AuthService } from "src/app/services/auth.service";
 import { LoginResponseDto } from "src/app/models/login.model";
 
 @Component({
-    selector: "app-auth",
-    templateUrl: "./auth.component.html",
-    styleUrls: ["./auth.component.css"],
+    selector: "app-login",
+    templateUrl: "./login.component.html",
+    styleUrls: ["./login.component.css"],
 })
-export class AuthComponent implements OnInit {
+export class LoginComponent implements OnInit {
     loginForm: FormGroup;
 
     constructor(private fb: FormBuilder, private auth: AuthService, private cookieService: CookieService) {
@@ -34,4 +34,8 @@ export class AuthComponent implements OnInit {
     logout(): void {
         this.auth.logout();
     }
+
+    resetPassword(): void {}
+
+    registerNewUser(): void {}
 }
