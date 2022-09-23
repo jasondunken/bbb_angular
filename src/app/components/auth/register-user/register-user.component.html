@@ -1,1 +1,12 @@
-<p>register-user works!</p>
+<div class="create-user-page">
+    <div class="create-user-component" [formGroup]="createUserForm">
+        <div class="section-title">Create User</div>
+        <label for="name">Name</label>
+        <input type="text" name="name" formControlName="userName" />
+        <label for="email">Email</label>
+        <input type="email" name="email" formControlName="email" />
+        <label for="password">Password</label>
+        <input type="text" name="password" formControlName="password" />
+        <div class="button" (click)="createUser()">Create User</div>
+    </div>
+</div>
