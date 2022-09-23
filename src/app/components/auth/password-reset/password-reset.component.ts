@@ -1,15 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
-  selector: 'app-password-reset',
-  templateUrl: './password-reset.component.html',
-  styleUrls: ['./password-reset.component.css']
+    selector: "app-password-reset",
+    templateUrl: "./password-reset.component.html",
+    styleUrls: ["./password-reset.component.css"],
 })
 export class PasswordResetComponent implements OnInit {
+    passwordResetForm: FormGroup;
+    emailSent: boolean = false;
 
-  constructor() { }
+    constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
+        this.passwordResetForm = this.fb.group({
+            email: ["", Validators.required],
+        });
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {}
 
+    resetPassword(): void {
+        this.auth.resetPassword(this.passwordResetForm.value).subscribe(() => {
+            this.emailSent = true;
+        });
+    }
 }
