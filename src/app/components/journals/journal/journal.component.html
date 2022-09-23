@@ -1,0 +1,24 @@
+<div class="journal-component" *ngIf="journal">
+    <div>Journal Details</div>
+    <p>ID {{ journal._id }}</p>
+    <p>Name {{ journal.name }}</p>
+    <p>Description {{ journal.description }}</p>
+    <p>Entries {{ journal.entries.length }}</p>
+    <div class="button" (click)="createEntry()" *ngIf="!creatingEntry">Create Journal Entry</div>
+    <div *ngIf="creatingEntry" [formGroup]="journalEntryForm">
+        <div class="section-title">New Journal Entry</div>
+        <label for="entryTitle">Title</label>
+        <div>
+            <input name="entryTitle" type="text" formControlName="entryTitle" />
+        </div>
+        <label for="entryDesctiption">Description</label>
+        <div>
+            <input name="entryDescription" type="text" formControlName="entryDescription" />
+        </div>
+        <label for="entryBody">Body</label>
+        <div>
+            <input class="journal-entry-body" name="entryBody" type="textarea" formControlName="entryBody" />
+        </div>
+        <div class="button" (click)="saveEntry()">Save Journal Entry</div>
+    </div>
+</div>

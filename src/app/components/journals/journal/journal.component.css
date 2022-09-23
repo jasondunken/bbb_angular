@@ -1,0 +1,10 @@
+.journal-component {
+    background-color: burlywood;
+    border: 1px solid black;
+    padding: 16px;
+}
+
+.journal-entry-body {
+    width: 600px;
+    height: 200px;
+}
