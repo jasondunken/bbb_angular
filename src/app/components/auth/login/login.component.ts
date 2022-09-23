@@ -1,10 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-
-import { CookieService } from "ngx-cookie-service";
+import { Router } from "@angular/router";
 
 import { AuthService } from "src/app/services/auth.service";
-import { LoginResponseDto } from "src/app/models/login.model";
 
 @Component({
     selector: "app-login",
@@ -14,7 +12,7 @@ import { LoginResponseDto } from "src/app/models/login.model";
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
 
-    constructor(private fb: FormBuilder, private auth: AuthService, private cookieService: CookieService) {
+    constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
         this.loginForm = this.fb.group({
             email: ["", Validators.required],
             password: ["", Validators.required],
@@ -26,8 +24,8 @@ export class LoginComponent implements OnInit {
     }
 
     login(): void {
-        this.auth.login(this.loginForm.value).subscribe((response: LoginResponseDto) => {
-            console.log("login response: ", response);
+        this.auth.login(this.loginForm.value).subscribe(() => {
+            this.router.navigateByUrl("journals");
         });
     }
 
@@ -35,7 +33,11 @@ export class LoginComponent implements OnInit {
         this.auth.logout();
     }
 
-    resetPassword(): void {}
+    resetPassword(): void {
+        this.router.navigateByUrl("password-reset");
+    }
 
-    registerNewUser(): void {}
+    registerNewUser(): void {
+        this.router.navigateByUrl("register");
+    }
 }
