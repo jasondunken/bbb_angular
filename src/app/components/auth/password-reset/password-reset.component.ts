@@ -14,15 +14,21 @@ export class PasswordResetComponent implements OnInit {
 
     constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
         this.passwordResetForm = this.fb.group({
-            email: ["", Validators.required],
+            email: ["", [Validators.required, Validators.email]],
         });
     }
 
     ngOnInit(): void {}
 
     resetPassword(): void {
-        this.auth.resetPassword(this.passwordResetForm.value).subscribe(() => {
-            this.emailSent = true;
-        });
+        if (this.passwordResetForm.valid) {
+            this.auth.resetPassword(this.passwordResetForm.value).subscribe(() => {
+                this.emailSent = true;
+            });
+        }
+    }
+
+    returnToLogin(): void {
+        this.router.navigateByUrl("login");
     }
 }
