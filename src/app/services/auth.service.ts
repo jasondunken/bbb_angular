@@ -49,7 +49,11 @@ export class AuthService implements OnDestroy {
     logout(): void {
         this.cookieService.deleteAll();
         this.userUpdated.next(null);
-        this.router.navigateByUrl("/manage");
+        this.router.navigateByUrl("/");
+    }
+
+    resetPassword(email): Observable<any> {
+        return this.http.post(`${environment.backend_api}/reset`, email);
     }
 
     getAuthToken(): string {
