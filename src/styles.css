@@ -37,6 +37,18 @@ p {
     margin: 0;
 }
 
+.button {
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: beige;
+    cursor: pointer;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: aqua;
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 767px) {
 }
