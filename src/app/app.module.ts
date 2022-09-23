@@ -17,6 +17,7 @@ import { AuthComponent } from "./components/auth/auth.component";
 import { AuthInterceptor } from "./interceptors/auth.interceptor";
 import { JournalListComponent } from './components/journals/journal-list/journal-list.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import { PasswordResetComponent } from './components/auth/password-reset/password-reset.component';
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import { LoginComponent } from './components/auth/login/login.component';
         AuthComponent,
         JournalListComponent,
         LoginComponent,
+        PasswordResetComponent,
     ],
     imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
     providers: [
