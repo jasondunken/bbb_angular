@@ -1,5 +1,16 @@
 <div class="journal-list">
     <h1>The Journals</h1>
+    <div class="button" (click)="addNewJournal()">Add a new Journal</div>
+    <div *ngIf="creatingJournal">
+        <div class="create-journal-component" [formGroup]="createJournalForm">
+            <div class="section-title">Create Journal</div>
+            <label for="name">Name</label>
+            <input type="text" name="name" formControlName="name" />
+            <label for="description">Description</label>
+            <input type="text" name="description" formControlName="description" />
+            <div class="button" (click)="createJournal()">Create Journal</div>
+        </div>
+    </div>
     <div class="journal" *ngFor="let journal of journals">
         <div>{{ journal.name }}</div>
         <div>{{ journal.description }}</div>

@@ -14,3 +14,13 @@
     padding: 16px;
     border: 1px solid black;
 }
+
+.create-journal-component {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 0.5rem;
+    padding: 1rem;
+    background-color: burlywood;
+    border: 1px solid black;
+    border-radius: 4px;
+}
