@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 
 import { environment } from "src/environments/environment";
 
-import { CreateJournalDto } from "../models/journal.model";
+import { CreateJournalDto, CreateJournalEntryDto } from "../models/journal.model";
 
 @Injectable({
     providedIn: "root",
@@ -27,5 +27,9 @@ export class JournalService {
 
     delete(id: String): Observable<any> {
         return this.http.delete(`${this.apiJournals}/${id}`);
+    }
+
+    createJournalEntry(journalEntry: CreateJournalEntryDto): Observable<any> {
+        return this.http.post(`${environment.backend_api}/journal/entries`, journalEntry);
     }
 }
