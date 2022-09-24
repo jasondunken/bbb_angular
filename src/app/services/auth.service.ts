@@ -19,7 +19,10 @@ export class AuthService implements OnDestroy {
     currentUser: LoginResponseDto | undefined;
 
     constructor(private http: HttpClient, private cookieService: CookieService, private router: Router) {
+        const JWT = this.cookieService.get("bitbytebytes.io/JWT");
         const username = this.cookieService.get("bitbytebytes.io/username");
+        const roles = JSON.parse(this.cookieService.get("bitbytebytes.io/roles"));
+        this.currentUser = { JWT, username, roles };
         this.userUpdated = new BehaviorSubject<any>(username);
     }
 
@@ -61,7 +64,7 @@ export class AuthService implements OnDestroy {
     }
 
     getUserRoles(): Observable<any> {
-        return this.http.get(`${environment.backend_api}/roles`);
+        return of({ roles: this.currentUser.roles });
     }
 
     getUserUpdate(): BehaviorSubject<any> {
