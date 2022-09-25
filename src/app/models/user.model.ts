@@ -1,12 +1,12 @@
 export interface CreateUserDto {
-    userName: String;
-    email: String;
-    password: String;
+    userName: string;
+    email: string;
+    password: string;
 }
 
 export interface UserDto {
-    _id: String;
-    userName: String;
-    email: String;
-    password: String;
+    _id: string;
+    userName: string;
+    email: string;
+    password: string;
 }

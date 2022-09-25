@@ -1,6 +1,6 @@
 <div class="journal-list">
     <h1>The Journals</h1>
-    <div class="button" (click)="addNewJournal()">Add a new Journal</div>
+    <div class="button" *ifRoles="['admin']" (click)="addNewJournal()">Add a new Journal</div>
     <div *ngIf="creatingJournal">
         <div class="create-journal-component" [formGroup]="createJournalForm">
             <div class="section-title">Create Journal</div>
@@ -11,8 +11,8 @@
             <div class="button" (click)="createJournal()">Create Journal</div>
         </div>
     </div>
-    <div class="journal" *ngFor="let journal of journals">
-        <div>{{ journal.name }}</div>
-        <div>{{ journal.description }}</div>
+    <div class="journal" *ngFor="let journal of journals" (click)="gotoJournal(journal._id)">
+        <h2>{{ journal.name }}</h2>
+        <h3>{{ journal.description }}</h3>
     </div>
 </div>

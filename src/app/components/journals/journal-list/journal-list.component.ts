@@ -21,7 +21,6 @@ export class JournalListComponent implements OnInit {
     ngOnInit(): void {
         this.journalService.findAll().subscribe((journals) => {
             this.journals = journals;
-            console.log("journals: ", journals);
         });
         this.createJournalForm = this.fb.group({
             name: ["", Validators.required],
@@ -42,6 +41,10 @@ export class JournalListComponent implements OnInit {
                 this.router.navigateByUrl(`journals/${journal._id}`);
             });
         }
+    }
+
+    gotoJournal(id): void {
+        this.router.navigateByUrl(`journals/${id}`);
     }
 
     cancelCreateJournal(): void {

@@ -13,6 +13,11 @@
 .journal {
     padding: 16px;
     border: 1px solid black;
+    cursor: pointer;
+}
+
+.journal:hover {
+    background-color: rgb(191, 159, 116);
 }
 
 .create-journal-component {
@@ -23,4 +28,9 @@
     background-color: burlywood;
     border: 1px solid black;
     border-radius: 4px;
+}
+
+.section-title {
+    font-weight: 700;
+    text-align: center;
 }

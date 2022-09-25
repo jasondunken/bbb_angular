@@ -22,9 +22,9 @@ export class JournalComponent implements OnInit {
         private journalService: JournalService
     ) {
         this.journalEntryForm = this.fb.group({
-            entryTitle: ["", Validators.required],
-            entryDescription: ["", Validators.required],
-            entryBody: ["", Validators.required],
+            title: ["", Validators.required],
+            description: ["", Validators.required],
+            body: ["", Validators.required],
         });
     }
 
@@ -40,7 +40,13 @@ export class JournalComponent implements OnInit {
     }
 
     saveEntry(): void {
-        console.log("entry: ", this.journalEntryForm.value);
-        this.creatingEntry = false;
+        if (this.journalEntryForm.valid) {
+            this.journalService
+                .createJournalEntry({ journalId: this.journal._id, ...this.journalEntryForm.value })
+                .subscribe((response) => {
+                    console.log("response: ", response);
+                    this.creatingEntry = false;
+                });
+        }
     }
 }

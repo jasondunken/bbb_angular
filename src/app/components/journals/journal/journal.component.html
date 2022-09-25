@@ -9,15 +9,15 @@
         <div class="section-title">New Journal Entry</div>
         <label for="entryTitle">Title</label>
         <div>
-            <input name="entryTitle" type="text" formControlName="entryTitle" />
+            <input name="entryTitle" type="text" formControlName="title" />
         </div>
         <label for="entryDesctiption">Description</label>
         <div>
-            <input name="entryDescription" type="text" formControlName="entryDescription" />
+            <input name="entryDescription" type="text" formControlName="description" />
         </div>
         <label for="entryBody">Body</label>
         <div>
-            <input class="journal-entry-body" name="entryBody" type="textarea" formControlName="entryBody" />
+            <input class="journal-entry-body" name="entryBody" type="textarea" formControlName="body" />
         </div>
         <div class="button" (click)="saveEntry()">Save Journal Entry</div>
     </div>
