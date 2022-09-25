@@ -11,13 +11,9 @@
         <div>
             <input name="entryTitle" type="text" formControlName="title" />
         </div>
-        <label for="entryDesctiption">Description</label>
-        <div>
-            <input name="entryDescription" type="text" formControlName="description" />
-        </div>
         <label for="entryBody">Body</label>
         <div>
-            <input class="journal-entry-body" name="entryBody" type="textarea" formControlName="body" />
+            <textarea class="journal-entry-body" name="entryBody" formControlName="body"></textarea>
         </div>
         <div class="button" (click)="saveEntry()">Save Journal Entry</div>
     </div>

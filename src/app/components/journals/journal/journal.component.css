@@ -4,7 +4,16 @@
     padding: 16px;
 }
 
+input {
+    font-size: 18px;
+}
+
 .journal-entry-body {
     width: 600px;
     height: 200px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    word-wrap: break-word;
+    resize: none;
 }

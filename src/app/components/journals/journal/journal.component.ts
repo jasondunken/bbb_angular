@@ -23,7 +23,6 @@ export class JournalComponent implements OnInit {
     ) {
         this.journalEntryForm = this.fb.group({
             title: ["", Validators.required],
-            description: ["", Validators.required],
             body: ["", Validators.required],
         });
     }

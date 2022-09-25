@@ -15,9 +15,7 @@ export interface JournalDto {
 export interface CreateJournalEntryDto {
     journalId: string;
     title: string;
-    description: string;
     body: string;
-    images: [];
 }
 
 export interface JournalEntryDto {
