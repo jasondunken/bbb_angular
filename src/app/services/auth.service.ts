@@ -20,10 +20,12 @@ export class AuthService implements OnDestroy {
 
     constructor(private http: HttpClient, private cookieService: CookieService, private router: Router) {
         const JWT = this.cookieService.get("bitbytebytes.io/JWT");
-        const username = this.cookieService.get("bitbytebytes.io/username");
-        const roles = JSON.parse(this.cookieService.get("bitbytebytes.io/roles"));
-        this.currentUser = { JWT, username, roles };
-        this.userUpdated = new BehaviorSubject<any>(username);
+        if (JWT) {
+            const username = this.cookieService.get("bitbytebytes.io/username");
+            const roles = JSON.parse(this.cookieService.get("bitbytebytes.io/roles"));
+            this.currentUser = { JWT, username, roles };
+            this.userUpdated = new BehaviorSubject<any>(username);
+        }
     }
 
     ngOnDestroy() {
