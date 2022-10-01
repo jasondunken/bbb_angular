@@ -47,7 +47,7 @@ export class JournalListComponent implements OnInit {
         this.router.navigateByUrl(`journals/${id}`);
     }
 
-    cancelCreateJournal(): void {
+    cancel(): void {
         this.creatingJournal = false;
     }
 }

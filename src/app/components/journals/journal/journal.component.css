@@ -1,7 +1,13 @@
+.journal-page {
+    padding: 1rem;
+}
+
 .journal-component {
     background-color: burlywood;
     border: 1px solid black;
     padding: 16px;
+    width: 800px;
+    margin: 0 auto;
 }
 
 input {

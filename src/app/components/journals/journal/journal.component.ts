@@ -34,6 +34,10 @@ export class JournalComponent implements OnInit {
         });
     }
 
+    backToJournals(): void {
+        this.router.navigateByUrl("journals");
+    }
+
     createEntry(): void {
         this.creatingEntry = true;
     }
@@ -47,5 +51,9 @@ export class JournalComponent implements OnInit {
                     this.creatingEntry = false;
                 });
         }
+    }
+
+    cancel(): void {
+        this.creatingEntry = false;
     }
 }
