@@ -10,7 +10,9 @@ import { JournalService } from "src/app/services/journal.service";
     styleUrls: ["./journal.component.css"],
 })
 export class JournalComponent implements OnInit {
+    journalId;
     journal;
+    journalEntries;
 
     journalEntryForm: FormGroup;
     creatingEntry: boolean = false;
@@ -28,10 +30,11 @@ export class JournalComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        const id = this.route.snapshot.paramMap.get("id");
-        this.journalService.findOne(id).subscribe((journal) => {
+        this.journalId = this.route.snapshot.paramMap.get("id");
+        this.journalService.findOne(this.journalId).subscribe((journal) => {
             this.journal = journal;
         });
+        this.getEntries();
     }
 
     backToJournals(): void {
@@ -49,8 +52,20 @@ export class JournalComponent implements OnInit {
                 .subscribe((response) => {
                     console.log("response: ", response);
                     this.creatingEntry = false;
+                    this.getEntries();
                 });
         }
+    }
+
+    getEntries(): void {
+        this.journalService.findAllEntries(this.journalId).subscribe((entries) => {
+            this.journalEntries = entries;
+            console.log("entries: ", entries);
+        });
+    }
+
+    formatDate(date) {
+        return new Date(date).toLocaleDateString();
     }
 
     cancel(): void {

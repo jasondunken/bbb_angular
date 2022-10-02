@@ -20,5 +20,10 @@
             <div class="button" (click)="saveEntry()">Save Journal Entry</div>
             <div class="button" (click)="cancel()">Cancel</div>
         </div>
+        <div class="journal-entry" *ngFor="let entry of journalEntries">
+            <h2>{{ entry.title }}</h2>
+            <h4>{{ formatDate(entry.createdAt) }}</h4>
+            <p>{{ entry.body }}</p>
+        </div>
     </div>
 </div>

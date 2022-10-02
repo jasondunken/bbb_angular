@@ -32,4 +32,8 @@ export class JournalService {
     createJournalEntry(journalEntry: CreateJournalEntryDto): Observable<any> {
         return this.http.post(`${environment.backend_api}/journal/entries`, journalEntry);
     }
+
+    findAllEntries(id: string): Observable<any> {
+        return this.http.get(`${environment.backend_api}/journal/entries/${id}`);
+    }
 }
