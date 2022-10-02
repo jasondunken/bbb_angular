@@ -6,19 +6,21 @@
         <p>Name {{ journal.name }}</p>
         <p>Description {{ journal.description }}</p>
         <p>Entries {{ journal.entries.length }}</p>
-        <div class="button" (click)="createEntry()" *ngIf="!creatingEntry">Create Journal Entry</div>
-        <div *ngIf="creatingEntry" [formGroup]="journalEntryForm">
-            <div class="section-title">New Journal Entry</div>
-            <label for="entryTitle">Title</label>
-            <div>
-                <input name="entryTitle" type="text" formControlName="title" />
+        <div *ifRoles="['admin']">
+            <div class="button" (click)="createEntry()" *ngIf="!creatingEntry">Create Journal Entry</div>
+            <div *ngIf="creatingEntry" [formGroup]="journalEntryForm">
+                <div class="section-title">New Journal Entry</div>
+                <label for="entryTitle">Title</label>
+                <div>
+                    <input name="entryTitle" type="text" formControlName="title" />
+                </div>
+                <label for="entryBody">Body</label>
+                <div>
+                    <textarea class="journal-entry-body" name="entryBody" formControlName="body"></textarea>
+                </div>
+                <div class="button" (click)="saveEntry()">Save Journal Entry</div>
+                <div class="button" (click)="cancel()">Cancel</div>
             </div>
-            <label for="entryBody">Body</label>
-            <div>
-                <textarea class="journal-entry-body" name="entryBody" formControlName="body"></textarea>
-            </div>
-            <div class="button" (click)="saveEntry()">Save Journal Entry</div>
-            <div class="button" (click)="cancel()">Cancel</div>
         </div>
         <div class="journal-entry" *ngFor="let entry of journalEntries">
             <h2>{{ entry.title }}</h2>
