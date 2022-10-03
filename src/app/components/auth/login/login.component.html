@@ -1,5 +1,5 @@
 <div class="login-page">
-    <div class="login-component" [formGroup]="loginForm">
+    <div class="login-component" [formGroup]="loginForm" (keyup.enter)="login()">
         <label for="email">Email</label>
         <input type="email" name="email" formControlName="email" />
         <label for="password">Password</label>

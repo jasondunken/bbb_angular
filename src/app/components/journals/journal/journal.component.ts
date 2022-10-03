@@ -50,7 +50,6 @@ export class JournalComponent implements OnInit {
             this.journalService
                 .createJournalEntry({ journalId: this.journal._id, ...this.journalEntryForm.value })
                 .subscribe((response) => {
-                    console.log("response: ", response);
                     this.creatingEntry = false;
                     this.getEntries();
                 });
@@ -60,7 +59,6 @@ export class JournalComponent implements OnInit {
     getEntries(): void {
         this.journalService.findAllEntries(this.journalId).subscribe((entries) => {
             this.journalEntries = entries;
-            console.log("entries: ", entries);
         });
     }
 

@@ -23,3 +23,13 @@ input {
     word-wrap: break-word;
     resize: none;
 }
+
+.journal-entry {
+    border: 1px solid black;
+    margin: 8px 0;
+    padding: 1rem;
+}
+
+.journal-entry > h2 {
+    margin: 0;
+}

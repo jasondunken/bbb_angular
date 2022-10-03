@@ -1,11 +1,8 @@
 <div class="journal-page">
     <div class="journal-component" *ngIf="journal">
         <div class="button" (click)="backToJournals()">Back to Journals List</div>
-        <div>Journal Details</div>
-        <p>ID {{ journal._id }}</p>
-        <p>Name {{ journal.name }}</p>
-        <p>Description {{ journal.description }}</p>
-        <p>Entries {{ journal.entries.length }}</p>
+        <h1>{{ journal.name }}</h1>
+        <p>{{ journal.description }}</p>
         <div *ifRoles="['admin']">
             <div class="button" (click)="createEntry()" *ngIf="!creatingEntry">Create Journal Entry</div>
             <div *ngIf="creatingEntry" [formGroup]="journalEntryForm">
