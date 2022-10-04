@@ -1,22 +1,18 @@
 <div class="journal-page">
     <div class="journal-component" *ngIf="journal">
-        <div class="button" (click)="backToJournals()">Back to Journals List</div>
+        <div class="button" (click)="backToJournals()"><mat-icon>arrow_back</mat-icon></div>
         <h1>{{ journal.name }}</h1>
         <p>{{ journal.description }}</p>
         <div *ifRoles="['admin']">
-            <div class="button" (click)="createEntry()" *ngIf="!creatingEntry">Create Journal Entry</div>
-            <div *ngIf="creatingEntry" [formGroup]="journalEntryForm">
-                <div class="section-title">New Journal Entry</div>
+            <div class="button" (click)="createEntry()" *ngIf="!creatingEntry"><mat-icon>add</mat-icon></div>
+            <div class="create-journal-entry-component" *ngIf="creatingEntry" [formGroup]="journalEntryForm">
+                <h2 class="section-title">New Journal Entry</h2>
                 <label for="entryTitle">Title</label>
-                <div>
-                    <input name="entryTitle" type="text" formControlName="title" />
-                </div>
+                <input name="entryTitle" type="text" formControlName="title" />
                 <label for="entryBody">Body</label>
-                <div>
-                    <textarea class="journal-entry-body" name="entryBody" formControlName="body"></textarea>
-                </div>
-                <div class="button" (click)="saveEntry()">Save Journal Entry</div>
-                <div class="button" (click)="cancel()">Cancel</div>
+                <textarea class="journal-entry-body" name="entryBody" formControlName="body"></textarea>
+                <div class="button" (click)="saveEntry()"><mat-icon>save</mat-icon></div>
+                <div class="button" (click)="cancel()"><mat-icon>cancel</mat-icon></div>
             </div>
         </div>
         <div class="journal-entry" *ngFor="let entry of journalEntries">
