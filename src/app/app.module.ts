@@ -1,13 +1,14 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-
 import { AppRoutingModule } from "./app-routing.module";
+
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
+import { MatIconModule } from "@angular/material/icon";
 
 import { CookieService } from "ngx-cookie-service";
 
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { UsersComponent } from "./components/users/users.component";
@@ -40,7 +41,7 @@ import { IfRolesDirective } from "./directives/if-roles.directive";
         JournalComponent,
         EntryComponent,
     ],
-    imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+    imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, ReactiveFormsModule, MatIconModule],
     providers: [
         CookieService,
         {
