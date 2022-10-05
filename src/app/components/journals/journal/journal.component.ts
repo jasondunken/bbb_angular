@@ -10,12 +10,11 @@ import { JournalService } from "src/app/services/journal.service";
     styleUrls: ["./journal.component.css"],
 })
 export class JournalComponent implements OnInit {
-    journalId;
     journal;
     journalEntries;
 
-    journalEntryForm: FormGroup;
     creatingEntry: boolean = false;
+    journalEntryForm: FormGroup;
 
     constructor(
         private route: ActivatedRoute,
@@ -30,11 +29,11 @@ export class JournalComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.journalId = this.route.snapshot.paramMap.get("id");
-        this.journalService.findOne(this.journalId).subscribe((journal) => {
+        const journalId = this.route.snapshot.paramMap.get("id");
+        this.journalService.findOne(journalId).subscribe((journal) => {
             this.journal = journal;
+            this.getEntries();
         });
-        this.getEntries();
     }
 
     backToJournals(): void {
@@ -57,7 +56,7 @@ export class JournalComponent implements OnInit {
     }
 
     getEntries(): void {
-        this.journalService.findAllEntries(this.journalId).subscribe((entries) => {
+        this.journalService.findAllEntries(this.journal._id).subscribe((entries) => {
             this.journalEntries = entries;
         });
     }
