@@ -5,9 +5,9 @@
             <div *ngIf="!creatingJournal" class="button" (click)="addNewJournal()"><mat-icon>add</mat-icon></div>
             <div *ngIf="creatingJournal" class="create-journal-component" [formGroup]="createJournalForm">
                 <h2 class="section-title">Create Journal</h2>
-                <label for="name">Name</label>
+                <label for="name"><h3>Name</h3></label>
                 <input type="text" name="name" formControlName="name" />
-                <label for="description">Description</label>
+                <label for="description"><h3>Description</h3></label>
                 <input type="text" name="description" formControlName="description" />
                 <div class="button" (click)="createJournal()"><mat-icon>save</mat-icon></div>
                 <div class="button" (click)="cancel()"><mat-icon>cancel</mat-icon></div>

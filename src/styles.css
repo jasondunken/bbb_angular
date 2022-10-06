@@ -46,7 +46,7 @@ p {
 }
 
 .button:hover {
-    background-color: aqua;
+    background-color: hsl(182, 25%, 60%);
 }
 
 /* Responsive Styles */
