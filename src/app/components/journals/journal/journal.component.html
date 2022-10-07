@@ -18,7 +18,7 @@
         <div class="journal-entry" *ngFor="let entry of journalEntries">
             <h2>{{ entry.title }}</h2>
             <h4>{{ formatDate(entry.createdAt) }}</h4>
-            <p>{{ entry.body }}</p>
+            <p [innerHtml]="entry.body"></p>
         </div>
     </div>
 </div>
