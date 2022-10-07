@@ -5,8 +5,8 @@
 .journal-component {
     background-color: burlywood;
     border: 1px solid black;
-    padding: 16px;
     width: 800px;
+    padding: 16px;
     margin: 0 auto;
 }
 
@@ -24,14 +24,13 @@ input {
     border-radius: 4px;
 }
 
-.journal-entry-body {
-    width: 600px;
+.journal-entry-textarea {
+    width: 99%;
     height: 200px;
-    border: none;
-    outline: none;
     font-size: 18px;
     word-wrap: break-word;
     resize: none;
+    margin: 0 auto;
 }
 
 .journal-entry {

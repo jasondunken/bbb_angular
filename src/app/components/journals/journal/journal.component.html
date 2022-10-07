@@ -2,7 +2,7 @@
     <div class="journal-component" *ngIf="journal">
         <div class="button" (click)="backToJournals()"><mat-icon>arrow_back</mat-icon></div>
         <h1>{{ journal.name }}</h1>
-        <p>{{ journal.description }}</p>
+        <h2>{{ journal.description }}</h2>
         <div *ifRoles="['admin']">
             <div class="button" (click)="createEntry()" *ngIf="!creatingEntry"><mat-icon>add</mat-icon></div>
             <div class="create-journal-entry-component" *ngIf="creatingEntry" [formGroup]="journalEntryForm">
@@ -10,7 +10,7 @@
                 <label for="entryTitle"><h3>Title</h3></label>
                 <input name="entryTitle" type="text" formControlName="title" />
                 <label for="entryBody"><h3>Body</h3></label>
-                <textarea class="journal-entry-body" name="entryBody" formControlName="body"></textarea>
+                <textarea class="journal-entry-textarea" name="entryBody" formControlName="body"></textarea>
                 <div class="button" (click)="saveEntry()"><mat-icon>save</mat-icon></div>
                 <div class="button" (click)="cancel()"><mat-icon>cancel</mat-icon></div>
             </div>
