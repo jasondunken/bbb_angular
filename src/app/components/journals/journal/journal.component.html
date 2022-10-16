@@ -7,10 +7,31 @@
             <div class="button" (click)="createEntry()" *ngIf="!creatingEntry"><mat-icon>add</mat-icon></div>
             <div class="create-journal-entry-component" *ngIf="creatingEntry" [formGroup]="journalEntryForm">
                 <h2 class="section-title">New Journal Entry</h2>
-                <label for="entryTitle"><h3>Title</h3></label>
-                <input name="entryTitle" type="text" formControlName="title" />
-                <label for="entryBody"><h3>Body</h3></label>
-                <textarea class="journal-entry-textarea" name="entryBody" formControlName="body"></textarea>
+
+                <div class="editor-component">
+                    <label for="entryTitle"><h3>Title</h3></label>
+                    <input name="entryTitle" type="text" formControlName="title" />
+                    <label for="entryBody"><h3>Body</h3></label>
+                    <div *ngIf="editEntry">
+                        <div class="button" (click)="togglePreview()">Preview</div>
+                        <textarea class="journal-entry-textarea" name="entryBody" formControlName="body"></textarea>
+                    </div>
+                    <div *ngIf="!editEntry">
+                        <div class="button" (click)="togglePreview()">Edit</div>
+                        <div id="entry-preview" [innerHtml]="entryPreviewHtml"></div>
+                    </div>
+                </div>
+
+                <div *ngIf="!addingImage" class="button" (click)="addImage()"><mat-icon>image</mat-icon></div>
+                <div *ngIf="addingImage" class="add-image-component">
+                    <label for="imagePicker" class="">Select Image</label>
+                    <input type="file" name="imagePicker" (change)="selectImageFile($event)" />
+                    <label for="imageName">Image Name</label>
+                    <input type="text" name="imageName" />
+                    <div class="button" (click)="uploadImage()"><mat-icon>save</mat-icon></div>
+                    <div class="button" (click)="cancelAddImage()"><mat-icon>cancel</mat-icon></div>
+                </div>
+
                 <div class="button" (click)="saveEntry()"><mat-icon>save</mat-icon></div>
                 <div class="button" (click)="cancel()"><mat-icon>cancel</mat-icon></div>
             </div>

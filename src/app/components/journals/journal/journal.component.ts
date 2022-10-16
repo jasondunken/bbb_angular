@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ImageService } from "src/app/services/image.service";
 
 import { JournalService } from "src/app/services/journal.service";
 
@@ -16,11 +17,18 @@ export class JournalComponent implements OnInit {
     creatingEntry: boolean = false;
     journalEntryForm: FormGroup;
 
+    // edit or preview
+    editEntry: boolean = true;
+    entryPreviewHtml: string = "";
+
+    addingImage: boolean = false;
+
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private fb: FormBuilder,
-        private journalService: JournalService
+        private journalService: JournalService,
+        private imageService: ImageService
     ) {
         this.journalEntryForm = this.fb.group({
             title: ["", Validators.required],
@@ -44,6 +52,13 @@ export class JournalComponent implements OnInit {
         this.creatingEntry = true;
     }
 
+    togglePreview(): void {
+        this.editEntry = !this.editEntry;
+        if (!this.editEntry) {
+            this.entryPreviewHtml = this.journalEntryForm.get("body").value;
+        }
+    }
+
     saveEntry(): void {
         if (this.journalEntryForm.valid) {
             this.journalService
@@ -60,6 +75,20 @@ export class JournalComponent implements OnInit {
             this.journalEntries = entries;
         });
     }
+
+    addImage(): void {
+        this.addingImage = true;
+    }
+
+    cancelAddImage(): void {
+        this.addingImage = false;
+    }
+
+    selectImageFile($event): void {
+        console.log("event: ", $event);
+    }
+
+    uploadImage(): void {}
 
     formatDate(date) {
         return new Date(date).toLocaleDateString();
