@@ -13,3 +13,8 @@
     border: 1px solid black;
     border-radius: 4px;
 }
+
+.section-title {
+    font-weight: 700;
+    text-align: center;
+}

@@ -1,12 +1,19 @@
 <div class="create-user-page">
-    <div class="create-user-component" [formGroup]="createUserForm">
-        <div class="section-title">Create User</div>
+    <div *ngIf="registering" class="create-user-component" [formGroup]="createUserForm">
+        <div class="section-title">Create Account</div>
         <label for="name">Name</label>
         <input type="text" name="name" formControlName="userName" />
         <label for="email">Email</label>
         <input type="email" name="email" formControlName="email" />
         <label for="password">Password</label>
-        <input type="text" name="password" formControlName="password" />
+        <input type="password" name="password" formControlName="password" />
+        <label for="verifyPassword">Verify Password</label>
+        <input type="password" name="verifyPassword" formControlName="verifyPassword" />
         <div class="button" (click)="createUser()">Create User</div>
+        <div class="button" (click)="returnToLogin()">Cancel</div>
+    </div>
+    <div *ngIf="!registering" class="create-user-component">
+        <div class="section-title">Check you email for account activation link</div>
+        <div class="button" (click)="returnToLogin()">Return to Login</div>
     </div>
 </div>

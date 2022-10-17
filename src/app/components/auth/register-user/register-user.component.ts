@@ -18,13 +18,14 @@ export class RegisterUserComponent implements OnInit {
     userDetails: UserDto | undefined;
     users: UserDto[] | undefined;
 
-    deleteStatus = "";
+    registering: boolean = true;
 
     constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
         this.createUserForm = this.fb.group({
             userName: ["", Validators.required],
             email: ["", Validators.required],
             password: ["", Validators.required],
+            verifyPassword: ["", Validators.required],
         });
         this.getUserForm = this.fb.group({
             userId: ["", Validators.required],
@@ -37,9 +38,16 @@ export class RegisterUserComponent implements OnInit {
     ngOnInit(): void {}
 
     createUser(): void {
-        const user: CreateUserDto = this.createUserForm.value;
-        this.userService.create(user).subscribe(() => {
-            this.router.navigateByUrl("login");
-        });
+        if (this.createUserForm.get("password").value != this.createUserForm.get("verifyPassword").value) return;
+        if (this.createUserForm.valid) {
+            const user: CreateUserDto = this.createUserForm.value;
+            this.userService.create(user).subscribe(() => {
+                this.registering = false;
+            });
+        }
+    }
+
+    returnToLogin(): void {
+        this.router.navigateByUrl("login");
     }
 }
