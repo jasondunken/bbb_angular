@@ -50,10 +50,6 @@ input {
     background-color: hsl(182, 25%, 60%);
 }
 
-.editor-content-panel {
-    background-color: burlywood;
-}
-
 .journal-entry-textarea {
     box-sizing: border-box;
     width: 100%;

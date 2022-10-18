@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 
 import { UserService } from "src/app/services/user.service";
-import { UserDto, CreateUserDto } from "src/app/models/user.model";
+import { CreateUserDto } from "src/app/models/user.model";
 
 @Component({
     selector: "app-register-user",
@@ -12,26 +12,15 @@ import { UserDto, CreateUserDto } from "src/app/models/user.model";
 })
 export class RegisterUserComponent implements OnInit {
     createUserForm: FormGroup;
-    getUserForm: FormGroup;
-    deleteUserForm: FormGroup;
-
-    userDetails: UserDto | undefined;
-    users: UserDto[] | undefined;
 
     registering: boolean = true;
 
     constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
         this.createUserForm = this.fb.group({
             userName: ["", Validators.required],
-            email: ["", Validators.required],
+            email: ["", [Validators.required, Validators.email]],
             password: ["", Validators.required],
             verifyPassword: ["", Validators.required],
-        });
-        this.getUserForm = this.fb.group({
-            userId: ["", Validators.required],
-        });
-        this.deleteUserForm = this.fb.group({
-            userId: ["", Validators.required],
         });
     }
 
