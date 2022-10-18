@@ -1,10 +1,12 @@
 <div class="journal-page">
     <div class="journal-component" *ngIf="journal">
-        <div class="button" (click)="backToJournals()"><mat-icon>arrow_back</mat-icon></div>
+        <div class="button round-button" (click)="backToJournals()"><mat-icon>arrow_back</mat-icon></div>
         <h1>{{ journal.name }}</h1>
         <h2>{{ journal.description }}</h2>
         <div *ifRoles="['admin']">
-            <div class="button" (click)="createEntry()" *ngIf="!creatingEntry"><mat-icon>add</mat-icon></div>
+            <div class="button round-button" (click)="createEntry()" *ngIf="!creatingEntry">
+                <mat-icon>add</mat-icon>
+            </div>
             <div class="create-journal-entry-component" *ngIf="creatingEntry" [formGroup]="journalEntryForm">
                 <h2 class="section-title">New Journal Entry</h2>
 
@@ -12,28 +14,51 @@
                     <label for="entryTitle"><h3>Title</h3></label>
                     <input name="entryTitle" type="text" formControlName="title" />
                     <label for="entryBody"><h3>Body</h3></label>
-                    <div *ngIf="editEntry">
-                        <div class="button" (click)="togglePreview()">Preview</div>
-                        <textarea class="journal-entry-textarea" name="entryBody" formControlName="body"></textarea>
-                    </div>
-                    <div *ngIf="!editEntry">
-                        <div class="button" (click)="togglePreview()">Edit</div>
-                        <div id="entry-preview" [innerHtml]="entryPreviewHtml"></div>
+                    <div class="editor-content-panel">
+                        <div class="editor-select-bar">
+                            <div
+                                class="button editor-select-button"
+                                [class.editor-button-selected]="editingEntry"
+                                (click)="editEntry()"
+                            >
+                                Edit
+                            </div>
+                            <div
+                                class="button editor-select-button"
+                                [class.editor-button-selected]="!editingEntry"
+                                (click)="previewEntry()"
+                            >
+                                Preview
+                            </div>
+                        </div>
+                        <textarea
+                            *ngIf="editingEntry"
+                            class="journal-entry-textarea"
+                            name="entryBody"
+                            formControlName="body"
+                        ></textarea>
+                        <div *ngIf="!editingEntry" class="journal-entry-preview" [innerHtml]="entryPreviewHtml"></div>
                     </div>
                 </div>
 
-                <div *ngIf="!addingImage" class="button" (click)="addImage()"><mat-icon>image</mat-icon></div>
                 <div *ngIf="addingImage" class="add-image-component">
-                    <label for="imagePicker" class="">Select Image</label>
+                    <label for="imagePicker" class=""><h2 class="section-title">Select Image</h2></label>
                     <input type="file" name="imagePicker" (change)="selectImageFile($event)" />
-                    <label for="imageName">Image Name</label>
+                    <label for="imageName"><h3>Image Name</h3></label>
                     <input type="text" name="imageName" />
-                    <div class="button" (click)="uploadImage()"><mat-icon>save</mat-icon></div>
-                    <div class="button" (click)="cancelAddImage()"><mat-icon>cancel</mat-icon></div>
+                    <div class="button-bar">
+                        <div class="button round-button" (click)="uploadImage()"><mat-icon>save</mat-icon></div>
+                        <div class="button round-button" (click)="cancelAddImage()"><mat-icon>cancel</mat-icon></div>
+                    </div>
                 </div>
 
-                <div class="button" (click)="saveEntry()"><mat-icon>save</mat-icon></div>
-                <div class="button" (click)="cancel()"><mat-icon>cancel</mat-icon></div>
+                <div class="button-bar">
+                    <div *ngIf="!addingImage" class="button round-button" (click)="addImage()">
+                        <mat-icon>image</mat-icon>
+                    </div>
+                    <div class="button round-button" (click)="saveEntry()"><mat-icon>save</mat-icon></div>
+                    <div class="button round-button" (click)="cancel()"><mat-icon>cancel</mat-icon></div>
+                </div>
             </div>
         </div>
         <div class="journal-entry" *ngFor="let entry of journalEntries">

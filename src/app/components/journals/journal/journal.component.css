@@ -26,13 +26,51 @@ input {
     border-radius: 4px;
 }
 
+.editor-select-bar {
+    display: flex;
+    flex-direction: row;
+}
+
+.editor-select-button {
+    width: 96px;
+    background: rgb(223, 221, 95);
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid black;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    margin-right: 2px;
+}
+
+.editor-button-selected {
+    background-color: hsl(182, 25%, 60%);
+}
+
+.editor-select-button:hover {
+    background-color: hsl(182, 25%, 60%);
+}
+
+.editor-content-panel {
+    background-color: burlywood;
+}
+
 .journal-entry-textarea {
-    width: 99%;
-    height: 200px;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 200px;
+    background-color: burlywood;
+    border: 1px solid black;
     font-size: 18px;
     word-wrap: break-word;
     resize: none;
-    margin: 0 auto;
+}
+
+.journal-entry-preview {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 200px;
+    font-size: 18px;
+    border: 1px solid black;
 }
 
 .journal-entry {

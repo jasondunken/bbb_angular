@@ -37,6 +37,12 @@ h6 {
 p {
     margin: 0;
 }
+.button-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+}
 
 .button {
     border: 1px solid black;
@@ -45,6 +51,18 @@ p {
     cursor: pointer;
     text-align: center;
     font-size: 16px;
+}
+
+.round-button {
+    width: 32px;
+    height: 32px;
+    background: rgb(223, 221, 95);
+    border-radius: 50%;
+    border-width: 3px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 0 4px;
 }
 
 .button:hover {

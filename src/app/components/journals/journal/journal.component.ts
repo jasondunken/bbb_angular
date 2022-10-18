@@ -18,7 +18,7 @@ export class JournalComponent implements OnInit {
     journalEntryForm: FormGroup;
 
     // edit or preview
-    editEntry: boolean = true;
+    editingEntry: boolean = true;
     entryPreviewHtml: string = "";
 
     addingImage: boolean = false;
@@ -52,11 +52,13 @@ export class JournalComponent implements OnInit {
         this.creatingEntry = true;
     }
 
-    togglePreview(): void {
-        this.editEntry = !this.editEntry;
-        if (!this.editEntry) {
-            this.entryPreviewHtml = this.journalEntryForm.get("body").value;
-        }
+    editEntry(): void {
+        this.editingEntry = true;
+    }
+
+    previewEntry(): void {
+        this.editingEntry = false;
+        this.entryPreviewHtml = this.journalEntryForm.get("body").value;
     }
 
     saveEntry(): void {
