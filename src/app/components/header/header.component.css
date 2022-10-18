@@ -39,9 +39,18 @@ a:active {
     color: inherit;
 }
 
+button {
+    padding: 0;
+    margin: 0;
+    background: rgb(223, 221, 95);
+    border: none;
+    text-decoration: none;
+}
+
 .button {
     width: 128px;
     height: 31px;
+    background: rgb(223, 221, 95);
     padding: 2px 8px;
     display: grid;
     place-content: center;

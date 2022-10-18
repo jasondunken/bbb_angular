@@ -7,7 +7,7 @@
         <input type="email" name="email" formControlName="email" />
         <label for="password">Password</label>
         <input type="text" name="password" formControlName="password" />
-        <div class="button" (click)="createUser()">Create User</div>
+        <button class="button" (click)="createUser()">Create User</button>
     </div>
     <div *ngIf="users" class="users-component">
         <div class="section-title">Users</div>
@@ -27,13 +27,13 @@
             <p>Email {{ userDetails.email }}</p>
             <p>Password {{ userDetails.password }}</p>
         </div>
-        <div class="button" (click)="findOne()">Get User</div>
+        <button class="button" (click)="findOne()">Get User</button>
     </div>
     <div class="delete-user-component" [formGroup]="deleteUserForm">
         <div class="section-title">Delete User</div>
         <label for="userId">User ID</label>
         <input type="text" name="userId" formControlName="userId" />
         <div id="delete-status">{{ deleteStatus || "" }}</div>
-        <div class="button" (click)="delete()">Delete User</div>
+        <button class="button" (click)="delete()">Delete User</button>
     </div>
 </div>

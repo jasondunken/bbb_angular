@@ -23,6 +23,10 @@ export class HeaderComponent implements OnInit {
         window.location.href = "http://localhost:3000/games/games.html";
     }
 
+    goRetro(): void {
+        window.location.href = "http://bitbytebytes.io";
+    }
+
     login(): void {
         if (this.currentUser) {
             this.auth.logout();

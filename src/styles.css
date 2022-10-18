@@ -44,6 +44,7 @@ p {
     background-color: beige;
     cursor: pointer;
     text-align: center;
+    font-size: 16px;
 }
 
 .button:hover {

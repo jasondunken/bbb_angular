@@ -1,8 +1,10 @@
 <div id="header">
     <div id="header-name"><div id="header-name-text">BitByteBytes.io</div></div>
     <div id="header-controls">
-        <div class="button" (click)="gotoWebGames()">web games</div>
-        <a href="http://bitbytebytes.io"><div class="button">go retro</div></a>
-        <div class="button" (click)="login()">{{ currentUser ? "Logout" : "Login" }}</div>
+        <button (click)="gotoWebGames()"><div class="button">web games</div></button>
+        <button (click)="goRetro()"><div class="button">go retro</div></button>
+        <button (click)="login()">
+            <div class="button">{{ currentUser ? "Logout" : "Login" }}</div>
+        </button>
     </div>
 </div>

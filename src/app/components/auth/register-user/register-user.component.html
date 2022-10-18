@@ -9,11 +9,11 @@
         <input type="password" name="password" formControlName="password" />
         <label for="verifyPassword">Verify Password</label>
         <input type="password" name="verifyPassword" formControlName="verifyPassword" />
-        <div class="button" (click)="createUser()">Create User</div>
-        <div class="button" (click)="returnToLogin()">Cancel</div>
+        <button class="button" (click)="createUser()">Create User</button>
+        <button class="button" (click)="returnToLogin()">Cancel</button>
     </div>
     <div *ngIf="!registering" class="create-user-component">
         <div class="section-title">Check you email for account activation link</div>
-        <div class="button" (click)="returnToLogin()">Return to Login</div>
+        <button class="button" (click)="returnToLogin()">Return to Login</button>
     </div>
 </div>
