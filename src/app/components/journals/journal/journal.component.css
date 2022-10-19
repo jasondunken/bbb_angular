@@ -5,7 +5,7 @@
 .journal-component {
     position: relative;
     background-color: burlywood;
-    border: 1px solid black;
+    border: 3px solid black;
     width: 800px;
     padding: 16px;
     margin: 0 auto;
@@ -14,7 +14,8 @@
 .button-left {
     position: absolute;
     top: 24px;
-    left: -56px;
+    left: -48px;
+    border-radius: 50% 6px 6px 50%;
 }
 
 .button-right {
