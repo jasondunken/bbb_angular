@@ -1,10 +1,14 @@
 <div class="journal-list-page">
     <div class="journal-list">
-        <h1>The Journals</h1>
-        <div *ifRoles="['admin']">
-            <div *ngIf="!creatingJournal" class="button round-button" (click)="addNewJournal()">
-                <mat-icon>add</mat-icon>
+        <div class="section-heading">
+            <h1>The Journals</h1>
+            <div *ifRoles="['admin']" class="button-right">
+                <div *ngIf="!creatingJournal" class="button round-button" (click)="addNewJournal()">
+                    <mat-icon matTooltip="add a new journal" matTooltipPosition="left">add</mat-icon>
+                </div>
             </div>
+        </div>
+        <div *ifRoles="['admin']">
             <div *ngIf="creatingJournal" class="create-journal-component" [formGroup]="createJournalForm">
                 <h2 class="section-title">Create Journal</h2>
                 <label for="name"><h3>Name</h3></label>

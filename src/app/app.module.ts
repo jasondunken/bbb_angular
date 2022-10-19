@@ -6,6 +6,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { MatIconModule } from "@angular/material/icon";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 import { CookieService } from "ngx-cookie-service";
 
@@ -41,7 +42,15 @@ import { IfRolesDirective } from "./directives/if-roles.directive";
         JournalComponent,
         EntryComponent,
     ],
-    imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, ReactiveFormsModule, MatIconModule],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatTooltipModule,
+    ],
     providers: [
         CookieService,
         {

@@ -1,11 +1,13 @@
 <div class="journal-page">
     <div class="journal-component" *ngIf="journal">
-        <div class="button round-button" (click)="backToJournals()"><mat-icon>arrow_back</mat-icon></div>
+        <div class="button round-button" (click)="backToJournals()">
+            <mat-icon matTooltip="return to journals" matTooltipPosition="right">arrow_back</mat-icon>
+        </div>
         <h1>{{ journal.name }}</h1>
         <h2>{{ journal.description }}</h2>
         <div *ifRoles="['admin']">
             <div class="button round-button" (click)="createEntry()" *ngIf="!creatingEntry">
-                <mat-icon>add</mat-icon>
+                <mat-icon matTooltip="add a new journal entry" matTooltipPosition="right">add</mat-icon>
             </div>
             <div class="create-journal-entry-component" *ngIf="creatingEntry" [formGroup]="journalEntryForm">
                 <h2 class="section-title">New Journal Entry</h2>
@@ -47,17 +49,30 @@
                     <label for="imageName"><h3>Image Name</h3></label>
                     <input type="text" name="imageName" />
                     <div class="button-bar">
-                        <div class="button round-button" (click)="uploadImage()"><mat-icon>save</mat-icon></div>
-                        <div class="button round-button" (click)="cancelAddImage()"><mat-icon>cancel</mat-icon></div>
+                        <div class="button round-button" matTooltip="upload image" (click)="uploadImage()">
+                            <mat-icon>save</mat-icon>
+                        </div>
+                        <div class="button round-button" matTooltip="cancel" (click)="cancelAddImage()">
+                            <mat-icon>cancel</mat-icon>
+                        </div>
                     </div>
                 </div>
 
                 <div class="button-bar">
-                    <div *ngIf="!addingImage" class="button round-button" (click)="addImage()">
+                    <div
+                        *ngIf="!addingImage"
+                        class="button round-button"
+                        matTooltip="add an image"
+                        (click)="addImage()"
+                    >
                         <mat-icon>image</mat-icon>
                     </div>
-                    <div class="button round-button" (click)="saveEntry()"><mat-icon>save</mat-icon></div>
-                    <div class="button round-button" (click)="cancel()"><mat-icon>cancel</mat-icon></div>
+                    <div class="button round-button" matTooltip="upload journal entry" (click)="saveEntry()">
+                        <mat-icon>save</mat-icon>
+                    </div>
+                    <div class="button round-button" matTooltip="cancel" (click)="cancel()">
+                        <mat-icon>cancel</mat-icon>
+                    </div>
                 </div>
             </div>
         </div>

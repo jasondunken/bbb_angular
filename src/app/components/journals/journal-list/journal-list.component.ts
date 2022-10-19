@@ -11,6 +11,7 @@ import { CreateJournalDto, JournalDto } from "src/app/models/journal.model";
     styleUrls: ["./journal-list.component.css"],
 })
 export class JournalListComponent implements OnInit {
+    tooltipPosition = "before";
     journals;
 
     creatingJournal: boolean = false;

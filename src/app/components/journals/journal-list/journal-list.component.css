@@ -2,6 +2,17 @@
     padding: 1rem;
 }
 
+.section-heading {
+    position: relative;
+    width: 100%;
+}
+
+.button-right {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
 .journal-list {
     display: flex;
     flex-direction: column;
