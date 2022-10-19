@@ -3,11 +3,24 @@
 }
 
 .journal-component {
+    position: relative;
     background-color: burlywood;
     border: 1px solid black;
     width: 800px;
     padding: 16px;
     margin: 0 auto;
+}
+
+.button-left {
+    position: absolute;
+    top: 24px;
+    left: -56px;
+}
+
+.button-right {
+    position: absolute;
+    top: 32px;
+    right: 16px;
 }
 
 input {

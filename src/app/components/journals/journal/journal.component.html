@@ -1,13 +1,13 @@
 <div class="journal-page">
     <div class="journal-component" *ngIf="journal">
-        <div class="button round-button" (click)="backToJournals()">
+        <div class="button round-button button-left" (click)="backToJournals()">
             <mat-icon matTooltip="return to journals" matTooltipPosition="right">arrow_back</mat-icon>
         </div>
         <h1>{{ journal.name }}</h1>
         <h2>{{ journal.description }}</h2>
         <div *ifRoles="['admin']">
-            <div class="button round-button" (click)="createEntry()" *ngIf="!creatingEntry">
-                <mat-icon matTooltip="add a new journal entry" matTooltipPosition="right">add</mat-icon>
+            <div class="button round-button button-right" (click)="createEntry()" *ngIf="!creatingEntry">
+                <mat-icon matTooltip="add a new journal entry" matTooltipPosition="left">add</mat-icon>
             </div>
             <div class="create-journal-entry-component" *ngIf="creatingEntry" [formGroup]="journalEntryForm">
                 <h2 class="section-title">New Journal Entry</h2>
