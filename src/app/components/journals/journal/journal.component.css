@@ -47,17 +47,17 @@ input {
 
 .editor-select-button {
     width: 96px;
-    background: rgb(223, 221, 95);
+    background-color: beige;
     font-size: 16px;
     text-align: center;
-    border: 1px solid black;
+    border: 3px solid black;
     border-bottom: none;
     border-radius: 8px 8px 0 0;
     margin-right: 2px;
 }
 
 .editor-button-selected {
-    background-color: hsl(182, 25%, 60%);
+    background-color: rgb(223, 221, 95);
 }
 
 .editor-select-button:hover {
@@ -69,7 +69,8 @@ input {
     width: 100%;
     min-height: 200px;
     background-color: burlywood;
-    border: 1px solid black;
+    border: 3px solid black;
+    outline: none;
     font-size: 18px;
     word-wrap: break-word;
     resize: none;
@@ -80,7 +81,7 @@ input {
     width: 100%;
     min-height: 200px;
     font-size: 18px;
-    border: 1px solid black;
+    border: 3px solid black;
 }
 
 .journal-entry {
