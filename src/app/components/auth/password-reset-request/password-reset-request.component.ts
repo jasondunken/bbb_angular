@@ -4,11 +4,11 @@ import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
 
 @Component({
-    selector: "app-password-reset",
-    templateUrl: "./password-reset.component.html",
-    styleUrls: ["./password-reset.component.css"],
+    selector: "app-password-reset-request",
+    templateUrl: "./password-reset-request.component.html",
+    styleUrls: ["./password-reset-request.component.css"],
 })
-export class PasswordResetComponent implements OnInit {
+export class PasswordResetRequestComponent implements OnInit {
     passwordResetForm: FormGroup;
     emailSent: boolean = false;
 

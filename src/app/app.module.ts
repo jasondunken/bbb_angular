@@ -19,7 +19,7 @@ import { AuthComponent } from "./components/auth/auth.component";
 import { AuthInterceptor } from "./interceptors/auth.interceptor";
 import { JournalListComponent } from "./components/journals/journal-list/journal-list.component";
 import { LoginComponent } from "./components/auth/login/login.component";
-import { PasswordResetComponent } from "./components/auth/password-reset/password-reset.component";
+import { PasswordResetRequestComponent } from "./components/auth/password-reset-request/password-reset-request.component";
 import { RegisterUserComponent } from "./components/auth/register-user/register-user.component";
 import { JournalComponent } from "./components/journals/journal/journal.component";
 import { EntryComponent } from "./components/journals/entry/entry.component";
@@ -37,7 +37,7 @@ import { IfRolesDirective } from "./directives/if-roles.directive";
         AuthComponent,
         JournalListComponent,
         LoginComponent,
-        PasswordResetComponent,
+        PasswordResetRequestComponent,
         RegisterUserComponent,
         JournalComponent,
         EntryComponent,
