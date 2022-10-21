@@ -58,8 +58,16 @@ export class AuthService implements OnDestroy {
         this.router.navigateByUrl("/");
     }
 
-    resetPassword(email): Observable<any> {
+    resetPasswordRequest(email: string): Observable<any> {
         return this.http.post(`${environment.backend_api}/reset`, email);
+    }
+
+    validateToken(token: string): Observable<any> {
+        return this.http.post(`${environment.backend_api}/validate`, { token });
+    }
+
+    resetPassword(email: string, newPassword: string): Observable<any> {
+        return this.http.patch(`${environment.backend_api}/reset`, { email, newPassword });
     }
 
     getAuthToken(): string {
