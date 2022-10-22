@@ -26,6 +26,7 @@ import { EntryComponent } from "./components/journals/entry/entry.component";
 
 import { IfRolesDirective } from "./directives/if-roles.directive";
 import { PasswordResetComponent } from './components/auth/password-reset/password-reset.component';
+import { ValidateUserComponent } from './components/auth/validate-user/validate-user.component';
 
 @NgModule({
     declarations: [
@@ -43,6 +44,7 @@ import { PasswordResetComponent } from './components/auth/password-reset/passwor
         JournalComponent,
         EntryComponent,
         PasswordResetComponent,
+        ValidateUserComponent,
     ],
     imports: [
         BrowserModule,

@@ -1,0 +1,11 @@
+<div class="validate-user-page">
+    <div *ngIf="validateUserToken && user" class="validate-user-component">
+        <div class="section-title">Welcome to BitByteBytes {{ user.userName }}!</div>
+        <button class="button" (click)="returnToLogin()">Return to login</button>
+    </div>
+
+    <div *ngIf="!validateUserToken || !user" class="validate-user-component">
+        <div class="section-title">Invalid token</div>
+        <button class="button" (click)="returnToLogin()">Return to login</button>
+    </div>
+</div>
