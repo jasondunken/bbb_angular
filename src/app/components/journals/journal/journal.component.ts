@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Observable, ReplaySubject } from "rxjs";
 import { ImageService } from "src/app/services/image.service";
 
 import { JournalService } from "src/app/services/journal.service";
@@ -22,6 +23,7 @@ export class JournalComponent implements OnInit {
     entryPreviewHtml: string = "";
 
     addingImage: boolean = false;
+    imageAsBase64: string;
 
     constructor(
         private route: ActivatedRoute,
@@ -86,11 +88,27 @@ export class JournalComponent implements OnInit {
         this.addingImage = false;
     }
 
-    selectImageFile($event): void {
-        console.log("event: ", $event);
+    selectImageFile(event): void {
+        this.convertToBase64(event.target.files[0]).subscribe((base64) => {
+            this.imageAsBase64 = base64;
+        });
     }
 
-    uploadImage(): void {}
+    convertToBase64(imageFile): Observable<string> {
+        const result = new ReplaySubject<string>(1);
+        const reader = new FileReader();
+        reader.readAsBinaryString(imageFile);
+        reader.onload = (event) => result.next(btoa(event.target.result.toString()));
+        return result;
+    }
+
+    uploadImage(): void {
+        if (this.imageAsBase64) {
+            this.imageService.create(this.imageAsBase64).subscribe((result) => {
+                console.log("create image: ", result);
+            });
+        }
+    }
 
     formatDate(date) {
         return new Date(date).toLocaleDateString();

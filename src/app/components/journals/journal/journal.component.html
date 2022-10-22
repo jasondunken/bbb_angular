@@ -46,7 +46,7 @@
                 <div *ngIf="addingImage" class="add-image-component">
                     <label for="imagePicker" class=""><h2 class="section-title">Select Image</h2></label>
                     <input type="file" name="imagePicker" (change)="selectImageFile($event)" />
-                    <label for="imageName"><h3>Image Name</h3></label>
+                    <label for="imageName"><h3>Image Tag</h3></label>
                     <input type="text" name="imageName" />
                     <div class="button-bar">
                         <div class="button round-button" matTooltip="upload image" (click)="uploadImage()">
