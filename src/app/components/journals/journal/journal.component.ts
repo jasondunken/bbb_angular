@@ -22,6 +22,7 @@ export class JournalComponent implements OnInit {
     editingEntry: boolean = true;
     entryPreviewHtml: string = "";
 
+    imageForm: FormGroup;
     addingImage: boolean = false;
     imageAsBase64: string;
 
@@ -35,6 +36,10 @@ export class JournalComponent implements OnInit {
         this.journalEntryForm = this.fb.group({
             title: ["", Validators.required],
             body: ["", Validators.required],
+        });
+
+        this.imageForm = this.fb.group({
+            tag: ["", Validators.required],
         });
     }
 
@@ -103,10 +108,12 @@ export class JournalComponent implements OnInit {
     }
 
     uploadImage(): void {
-        if (this.imageAsBase64) {
-            this.imageService.create(this.imageAsBase64).subscribe((result) => {
-                console.log("create image: ", result);
-            });
+        if (this.imageAsBase64 && this.imageForm.valid) {
+            this.imageService
+                .create({ tag: this.imageForm.get("tag").value, imageData: this.imageAsBase64 })
+                .subscribe((result) => {
+                    console.log("create image: ", result);
+                });
         }
     }
 

@@ -43,11 +43,11 @@
                     </div>
                 </div>
 
-                <div *ngIf="addingImage" class="add-image-component">
+                <div *ngIf="addingImage" class="add-image-component" [formGroup]="imageForm">
                     <label for="imagePicker" class=""><h2 class="section-title">Select Image</h2></label>
                     <input type="file" name="imagePicker" (change)="selectImageFile($event)" />
-                    <label for="imageName"><h3>Image Tag</h3></label>
-                    <input type="text" name="imageName" />
+                    <label for="tag"><h3>Image Tag</h3></label>
+                    <input type="text" name="tag" formControlName="tag" />
                     <div class="button-bar">
                         <div class="button round-button" matTooltip="upload image" (click)="uploadImage()">
                             <mat-icon>save</mat-icon>

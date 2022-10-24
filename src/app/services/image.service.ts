@@ -4,6 +4,8 @@ import { Observable } from "rxjs";
 
 import { environment } from "src/environments/environment";
 
+import { ImageDto } from "../models/image.model";
+
 @Injectable({
     providedIn: "root",
 })
@@ -11,16 +13,16 @@ export class ImageService {
     apiImages = `${environment.backend_api}/images`;
     constructor(private http: HttpClient) {}
 
-    create(imageData): Observable<any> {
-        return this.http.post(this.apiImages, imageData);
+    create(image: ImageDto): Observable<any> {
+        return this.http.post(this.apiImages, image);
     }
 
     findAll(): Observable<any> {
         return this.http.get(this.apiImages);
     }
 
-    findOne(id: String): Observable<any> {
-        return this.http.get(`${this.apiImages}/${id}`);
+    findOne(tag: String): Observable<any> {
+        return this.http.get(`${this.apiImages}/${tag}`);
     }
 
     delete(id: String): Observable<any> {
