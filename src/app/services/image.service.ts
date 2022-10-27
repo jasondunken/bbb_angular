@@ -28,4 +28,12 @@ export class ImageService {
     delete(id: String): Observable<any> {
         return this.http.delete(`${this.apiImages}/${id}`);
     }
+
+    uploadImages(images): Observable<any> {
+        console.log("images[]: ", images);
+        if (images.length === 1) {
+            return this.http.post(`${environment.backend_api}/images/image`, images[0]);
+        }
+        return this.http.post(`${environment.backend_api}/images/image/multiple`, images);
+    }
 }
