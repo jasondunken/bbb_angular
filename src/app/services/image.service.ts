@@ -36,4 +36,8 @@ export class ImageService {
         }
         return this.http.post(`${environment.backend_api}/images/image/multiple`, images);
     }
+
+    getJournalImages(journalId): Observable<any> {
+        return this.http.get(`${environment.backend_api}/images/${journalId}`);
+    }
 }
