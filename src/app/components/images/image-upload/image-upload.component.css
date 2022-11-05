@@ -1,0 +1,18 @@
+.add-image-component {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 0.5rem;
+    padding: 1rem;
+    background-color: burlywood;
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+.section-title {
+    font-weight: 700;
+    text-align: center;
+}
+
+input {
+    font-size: 18px;
+}

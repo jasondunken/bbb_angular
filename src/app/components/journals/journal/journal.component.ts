@@ -14,6 +14,7 @@ import { JournalService } from "src/app/services/journal.service";
 })
 export class JournalComponent implements OnInit {
     journal;
+    journalId;
     journalEntries;
 
     creatingEntry: boolean = false;
@@ -46,8 +47,8 @@ export class JournalComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        const journalId = this.route.snapshot.paramMap.get("id");
-        this.journalService.findOne(journalId).subscribe((journal) => {
+        this.journalId = this.route.snapshot.paramMap.get("id");
+        this.journalService.findOne(this.journalId).subscribe((journal) => {
             this.journal = journal;
             this.getEntries();
         });
