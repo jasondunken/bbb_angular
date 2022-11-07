@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { MatIconModule } from "@angular/material/icon";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatDialogModule } from "@angular/material/dialog";
 
 import { CookieService } from "ngx-cookie-service";
 
@@ -25,10 +26,11 @@ import { JournalComponent } from "./components/journals/journal/journal.componen
 import { EntryComponent } from "./components/journals/entry/entry.component";
 
 import { IfRolesDirective } from "./directives/if-roles.directive";
-import { PasswordResetComponent } from './components/auth/password-reset/password-reset.component';
-import { ValidateUserComponent } from './components/auth/validate-user/validate-user.component';
-import { ImageUploadComponent } from './components/images/image-upload/image-upload.component';
-import { ImageListComponent } from './components/images/image-list/image-list.component';
+import { PasswordResetComponent } from "./components/auth/password-reset/password-reset.component";
+import { ValidateUserComponent } from "./components/auth/validate-user/validate-user.component";
+import { ImageUploadComponent } from "./components/images/image-upload/image-upload.component";
+import { ImageListComponent } from "./components/images/image-list/image-list.component";
+import { ConfirmationDialogComponent } from "./components/dialogs/confirmation-dialog/confirmation-dialog.component";
 
 @NgModule({
     declarations: [
@@ -49,6 +51,7 @@ import { ImageListComponent } from './components/images/image-list/image-list.co
         ValidateUserComponent,
         ImageUploadComponent,
         ImageListComponent,
+        ConfirmationDialogComponent,
     ],
     imports: [
         BrowserModule,
@@ -58,6 +61,7 @@ import { ImageListComponent } from './components/images/image-list/image-list.co
         ReactiveFormsModule,
         MatIconModule,
         MatTooltipModule,
+        MatDialogModule,
     ],
     providers: [
         CookieService,
