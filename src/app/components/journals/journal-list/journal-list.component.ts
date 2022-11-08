@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 import { JournalService } from "src/app/services/journal.service";
 import { CreateJournalDto, JournalDto } from "src/app/models/journal.model";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
     selector: "app-journal-list",
@@ -17,7 +18,12 @@ export class JournalListComponent implements OnInit {
     creatingJournal: boolean = false;
     createJournalForm: FormGroup;
 
-    constructor(private journalService: JournalService, private fb: FormBuilder, private router: Router) {}
+    constructor(
+        private journalService: JournalService,
+        private fb: FormBuilder,
+        private router: Router,
+        public dialog: MatDialog
+    ) {}
 
     ngOnInit(): void {
         this.journalService.findAll().subscribe((journals) => {
@@ -50,5 +56,10 @@ export class JournalListComponent implements OnInit {
 
     cancel(): void {
         this.creatingJournal = false;
+    }
+
+    archiveJournal(event, journalId: string): void {
+        event.stopPropagation();
+        console.log(`archive not yet implemented: journalId ${journalId}`);
     }
 }

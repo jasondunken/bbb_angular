@@ -9,6 +9,9 @@
             <div class="button round-button button-right" (click)="createEntry()" *ngIf="!creatingEntry">
                 <mat-icon matTooltip="add a new journal entry" matTooltipPosition="left">add</mat-icon>
             </div>
+            <div class="button round-button button-right archive-button" (click)="archiveJournal(journal._id)">
+                <mat-icon matTooltip="archive this journal" matTooltipPosition="left">archive</mat-icon>
+            </div>
             <div class="create-journal-entry-component" *ngIf="creatingEntry" [formGroup]="journalEntryForm">
                 <h2 class="section-title">New Journal Entry</h2>
 

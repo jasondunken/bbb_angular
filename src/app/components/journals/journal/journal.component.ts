@@ -144,4 +144,8 @@ export class JournalComponent implements OnInit {
     cancel(): void {
         this.creatingEntry = false;
     }
+
+    archiveJournal(journalId: string): void {
+        console.log(`archive not yet implemented ${journalId}`);
+    }
 }

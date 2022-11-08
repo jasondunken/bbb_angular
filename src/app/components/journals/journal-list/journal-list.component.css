@@ -26,6 +26,7 @@
 }
 
 .journal {
+    position: relative;
     padding: 16px;
     border: 1px solid black;
     cursor: pointer;

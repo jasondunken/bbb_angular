@@ -24,6 +24,10 @@
     right: 16px;
 }
 
+.archive-button {
+    right: 64px;
+}
+
 input {
     font-size: 18px;
 }

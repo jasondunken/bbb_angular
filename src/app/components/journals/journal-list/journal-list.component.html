@@ -22,6 +22,11 @@
             </div>
         </div>
         <div class="journal" *ngFor="let journal of journals" (click)="gotoJournal(journal._id)">
+            <div *ifRoles="['admin']" class="button-right">
+                <div class="button round-button" (click)="archiveJournal($event, journal._id)">
+                    <mat-icon matTooltip="archive this journal" matTooltipPosition="left">archive</mat-icon>
+                </div>
+            </div>
             <h2>{{ journal.name }}</h2>
             <h3>{{ journal.description }}</h3>
         </div>
