@@ -82,6 +82,11 @@ export class JournalComponent implements OnInit {
         }
     }
 
+    editJournalEntry(event, entryId: string): void {
+        event.stopPropagation();
+        console.log(`edit existing entry not yet implemented $entryId{}`);
+    }
+
     getEntries(): void {
         this.journalService.findAllEntries(this.journal._id).subscribe((entries) => {
             this.journalEntries = entries;

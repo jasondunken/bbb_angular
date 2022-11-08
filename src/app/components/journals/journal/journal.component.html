@@ -69,6 +69,11 @@
             </div>
         </div>
         <div class="journal-entry" *ngFor="let entry of journalEntries">
+            <div *ifRoles="['admin']" class="button-right edit-button">
+                <div class="button round-button" (click)="editJournalEntry($event, journal._id)">
+                    <mat-icon matTooltip="edit this entry" matTooltipPosition="left">edit</mat-icon>
+                </div>
+            </div>
             <h2>{{ entry.title }}</h2>
             <h4>{{ formatDate(entry.createdAt) }}</h4>
             <p [innerHtml]="entry.body"></p>

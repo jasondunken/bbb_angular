@@ -28,6 +28,11 @@
     right: 64px;
 }
 
+.edit-button {
+    top: 16px;
+    right: 16px;
+}
+
 input {
     font-size: 18px;
 }
@@ -89,6 +94,7 @@ input {
 }
 
 .journal-entry {
+    position: relative;
     border: 1px solid black;
     margin: 8px 0;
     padding: 1rem;
