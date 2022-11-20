@@ -31,6 +31,8 @@ import { ValidateUserComponent } from "./components/auth/validate-user/validate-
 import { ImageUploadComponent } from "./components/images/image-upload/image-upload.component";
 import { ImageListComponent } from "./components/images/image-list/image-list.component";
 import { ConfirmationDialogComponent } from "./components/dialogs/confirmation-dialog/confirmation-dialog.component";
+import { CommentsComponent } from './components/comments/comments/comments.component';
+import { CommentComponent } from './components/comments/comment/comment.component';
 
 @NgModule({
     declarations: [
@@ -52,6 +54,8 @@ import { ConfirmationDialogComponent } from "./components/dialogs/confirmation-d
         ImageUploadComponent,
         ImageListComponent,
         ConfirmationDialogComponent,
+        CommentsComponent,
+        CommentComponent,
     ],
     imports: [
         BrowserModule,
