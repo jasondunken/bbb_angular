@@ -10,3 +10,4 @@ and uses some [Angular Material](https://material.angular.io) modules
 -   Role based route and component access
 -   Journal creation and editing with preview components
 -   User account management components
+-   static routing to vanilla js part of site
