@@ -11,3 +11,4 @@ and uses some [Angular Material](https://material.angular.io) modules
 -   Journal creation and editing with preview components
 -   User account management components
 -   static routing to vanilla js part of site
+-   Admin panel
