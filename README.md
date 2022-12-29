@@ -10,5 +10,5 @@ and uses some [Angular Material](https://material.angular.io) modules
 -   Role based route and component access
 -   Journal creation and editing with preview components
 -   User account management components
--   Admin panel
+-   Admin/Site management components
 -   Static routing to vanilla js resources
