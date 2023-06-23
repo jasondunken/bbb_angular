@@ -20,11 +20,11 @@ export class HeaderComponent implements OnInit {
     }
 
     gotoWebGames(): void {
-        window.location.href = "http://localhost:3000/games/games.html";
+        window.location.assign("../games/games.html");
     }
 
     goRetro(): void {
-        window.location.href = "http://bitbytebytes.io";
+        window.location.href = "../index.html";
     }
 
     login(): void {
