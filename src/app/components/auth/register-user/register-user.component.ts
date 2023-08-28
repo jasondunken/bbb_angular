@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { Title } from "@angular/platform-browser";
 
 import { UserService } from "src/app/services/user.service";
 import { CreateUserDto } from "src/app/models/user.model";
@@ -15,7 +16,12 @@ export class RegisterUserComponent implements OnInit {
 
     registering: boolean = true;
 
-    constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+    constructor(
+        private title: Title,
+        private fb: FormBuilder,
+        private userService: UserService,
+        private router: Router
+    ) {
         this.createUserForm = this.fb.group({
             userName: ["", Validators.required],
             email: ["", [Validators.required, Validators.email]],
@@ -24,7 +30,9 @@ export class RegisterUserComponent implements OnInit {
         });
     }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.title.setTitle("Register");
+    }
 
     createUser(): void {
         if (this.createUserForm.get("password").value != this.createUserForm.get("verifyPassword").value) return;

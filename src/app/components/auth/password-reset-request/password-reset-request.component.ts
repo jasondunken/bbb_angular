@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { Title } from "@angular/platform-browser";
 
 import { AuthService } from "src/app/services/auth.service";
 
@@ -13,13 +14,15 @@ export class PasswordResetRequestComponent implements OnInit {
     passwordResetForm: FormGroup;
     emailSent: boolean = false;
 
-    constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
+    constructor(private title: Title, private fb: FormBuilder, private auth: AuthService, private router: Router) {
         this.passwordResetForm = this.fb.group({
             email: ["", [Validators.required, Validators.email]],
         });
     }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.title.setTitle("Reset Password");
+    }
 
     resetPassword(): void {
         if (this.passwordResetForm.valid) {

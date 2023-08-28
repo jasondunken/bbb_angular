@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { Title } from "@angular/platform-browser";
 
 import { AuthService } from "src/app/services/auth.service";
 
@@ -12,7 +13,7 @@ import { AuthService } from "src/app/services/auth.service";
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
 
-    constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
+    constructor(private title: Title, private fb: FormBuilder, private auth: AuthService, private router: Router) {
         this.loginForm = this.fb.group({
             email: ["", [Validators.required, Validators.email]],
             password: ["", Validators.required],
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // this.cookieService.deleteAll();
+        this.title.setTitle("Login");
     }
 
     login(): void {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Title } from "@angular/platform-browser";
 
 import { CreateJournalDto, JournalDto } from "src/app/models/journal.model";
 import { JournalService } from "src/app/services/journal.service";
@@ -22,7 +23,7 @@ export class JournalsComponent implements OnInit {
 
     deleteStatus: String = "";
 
-    constructor(private fb: FormBuilder, private journalService: JournalService) {
+    constructor(private title: Title, private fb: FormBuilder, private journalService: JournalService) {
         this.createJournalForm = this.fb.group({
             name: ["", Validators.required],
             description: ["", Validators.required],
@@ -41,7 +42,9 @@ export class JournalsComponent implements OnInit {
         this.findAll();
     }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.title.setTitle("Journals");
+    }
 
     createJournal(): void {
         const journal: CreateJournalDto = this.createJournalForm.value;
