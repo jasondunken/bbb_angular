@@ -1,9 +1,9 @@
 import { HttpClient } from "@angular/common/http";
-import { EventEmitter, Injectable, OnDestroy } from "@angular/core";
+import { Injectable, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 import { CookieService } from "ngx-cookie-service";
 import { BehaviorSubject, Observable, of, Subject } from "rxjs";
-import { timeout, catchError, tap, takeUntil } from "rxjs/operators";
+import { catchError, tap, takeUntil } from "rxjs/operators";
 
 import { environment } from "src/environments/environment";
 
