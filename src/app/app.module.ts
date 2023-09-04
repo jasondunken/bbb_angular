@@ -33,6 +33,7 @@ import { ImageListComponent } from "./components/images/image-list/image-list.co
 import { ConfirmationDialogComponent } from "./components/dialogs/confirmation-dialog/confirmation-dialog.component";
 import { CommentsComponent } from './components/comments/comments/comments.component';
 import { CommentComponent } from './components/comments/comment/comment.component';
+import { CommentCreateComponent } from './components/comments/comment-create/comment-create.component';
 
 @NgModule({
     declarations: [
@@ -56,6 +57,7 @@ import { CommentComponent } from './components/comments/comment/comment.componen
         ConfirmationDialogComponent,
         CommentsComponent,
         CommentComponent,
+        CommentCreateComponent,
     ],
     imports: [
         BrowserModule,
