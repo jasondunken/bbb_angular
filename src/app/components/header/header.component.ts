@@ -20,11 +20,11 @@ export class HeaderComponent implements OnInit {
     }
 
     gotoWebGames(): void {
-        window.location.assign("../games/games.html");
+        window.location.assign("../index.html");
     }
 
     goRetro(): void {
-        window.location.href = "../index.html";
+        window.location.href = "../retro.html";
     }
 
     login(): void {
